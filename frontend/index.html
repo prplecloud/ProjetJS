@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card list</title>
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+
+</head>
+
+<body>
+    <header>
+        <a href="http://localhost:8080/liste">
+            <img src="assets/img/logo_tcg.png" class="logo" alt="">
+        </a>
+
+        <ul>
+            <li><a class="nav" href="http://localhost:8080/liste">Carte à l'unité</a></li>
+            <li><a class="nav" href="http://localhost:8080/liste">Booster</a></li>
+            <li><a class="nav" href="http://localhost:8080/liste">Accessoires</a></li>
+        </ul>
+        <form action="/recherche" method="GET" class="search">
+            <input type="text" id="recherche" name="query" placeholder="Search cards" required class="search_bar">
+        </form>
+        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-bag-minimal" viewBox="0 0 64 64">
+            <path stroke="null" id="svg_4" fill-opacity="null" stroke-opacity="null" fill="null"
+                d="M11.375 17.863h41.25v36.75h-41.25z"></path>
+            <path stroke="null" id="svg_2" d="M22.25 18c0-7.105 4.35-9 9.75-9s9.75 1.895 9.75 9"></path>
+        </svg>
+        <svg class="svg-icon"   
+            viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M843.282963 870.115556c-8.438519-140.515556-104.296296-257.422222-233.908148-297.14963C687.881481 536.272593 742.4 456.533333 742.4 364.088889c0-127.241481-103.158519-230.4-230.4-230.4S281.6 236.847407 281.6 364.088889c0 92.444444 54.518519 172.183704 133.12 208.877037-129.611852 39.727407-225.46963 156.634074-233.908148 297.14963-0.663704 10.903704 7.964444 20.195556 18.962963 20.195556l0 0c9.955556 0 18.299259-7.774815 18.962963-17.73037C227.745185 718.506667 355.65037 596.385185 512 596.385185s284.254815 122.121481 293.357037 276.195556c0.568889 9.955556 8.912593 17.73037 18.962963 17.73037C835.318519 890.311111 843.946667 881.019259 843.282963 870.115556zM319.525926 364.088889c0-106.287407 86.186667-192.474074 192.474074-192.474074s192.474074 86.186667 192.474074 192.474074c0 106.287407-86.186667 192.474074-192.474074 192.474074S319.525926 470.376296 319.525926 364.088889z" />
+        </svg>
+    </header>
+</body>
+
+</html>
