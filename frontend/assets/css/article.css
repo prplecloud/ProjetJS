@@ -1,0 +1,136 @@
+.choice {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    border: solid 1px white;
+    border-radius: 10px;
+    width: 80%;
+    box-shadow: 0 0 5px #808080;
+    background-color: white;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.choice_button {
+    width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.cat_img {
+    width: 100%;
+    transition: transform 0.5s;
+}
+
+.cat_img:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    
+}
+
+.main_ctn {
+    border: solid 1px white;
+    box-shadow: 0 0 5px #808080;
+    background-color: white;
+    width: 79%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+    padding: 10px;
+}
+
+.article_desc {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.prix {
+    font-size: 3em;
+}
+
+.article_img {
+    width: 100%;
+}
+
+#img_article {
+    width: 100%;
+}
+
+.item_button {
+    background-color: #f15a25;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Rubik_Black';
+    padding: 10px 20px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#decrease {
+    color: #f9b142  ;
+    border: 3px solid #f9b142;
+    border-radius: 50%;
+    padding: 15px 20px;
+    cursor: pointer;
+}
+
+#decrease:hover {
+    background-color: #f9b142;
+    color: white;
+}
+
+#increase {
+    color: #f9b142  ;
+    border: 3px solid #f9b142;
+    border-radius: 50%;
+    padding: 15px 20px;
+    cursor: pointer;
+}
+
+#increase:hover {
+    background-color: #f9b142;
+    color: white;
+}
+
+.quantity {
+  display: flex;
+    gap: 10px;
+}
+
+#quantity {
+    width: 47px;
+    text-align: center;
+    font-size: 1.5em;
+    border: 3px solid #f9b142;
+    border-radius: 50%;
+    color:  #f9b142; ;
+    font-family: 'Rubik_Black';
+}
+
+.sub_img {
+    width: 25%;
+    border-radius: 10px;
+}
+
+.images_ctn {
+    width: 80%;
+}
+
+#img_article {
+    width: 100%;
+}

@@ -5,9 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
+    <title>Article</title>
     <link rel="stylesheet" href="assets/css/header.css">
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/article.css">
 
 </head>
 
@@ -25,7 +25,8 @@
         <form action="/recherche" method="GET" class="search">
             <input type="text" id="recherche" name="query" placeholder="Rechercher" required class="search_bar">
         </form>
-        <svg id="svg_bar" aria-hidden="true" focusable="false" role="presentation" class="icon icon-bag-minimal" viewBox="0 0 64 64">
+        <svg id="svg_bar" aria-hidden="true" focusable="false" role="presentation" class="icon icon-bag-minimal"
+            viewBox="0 0 64 64">
             <path stroke="null" id="svg_4" fill-opacity="null" stroke-opacity="null" fill="null"
                 d="M11.375 17.863h41.25v36.75h-41.25z"></path>
             <path stroke="null" id="svg_2" d="M22.25 18c0-7.105 4.35-9 9.75-9s9.75 1.895 9.75 9"></path>
@@ -42,45 +43,39 @@
                 <a href=""><img class="cat_img" src="assets/img/LogoYGO.png" alt=""></a>
             </div>
         </div>
-        <div class="articles">
-            <div class="article">
-                <h3>Pokemon</h3>
-                <p class="cat_item">Display Pokemon</p>
-                <img class="article_img" src="assets/img/display.png" alt="">
-                <h2>DISPLAY EV06 - MASCARADE CRÉPUSCULAIRE</h2>
-                <p>166.90€</p>
-                <button class="item_button">Voir le produits</button>
+        <div class="main_ctn">
+            <div class="images_ctn">
+                <div class="article_img">
+                    <img id="img_article" src="assets/img/display.png" alt="">
+                </div>
+                <div class="sub_img_ctn">
+                    <img class="sub_img" src="assets/img/display2.png" alt="">
+                    <img class="sub_img" src="assets/img/display3.png" alt="">
+                </div>
             </div>
-            <div class="article">
-                <h3>Pokemon</h3>
-                <p class="cat_item">Display Pokemon</p>
-                <img class="article_img" src="assets/img/display.png" alt="">
-                <h2>DISPLAY EV06 - MASCARADE CRÉPUSCULAIRE</h2>
-                <p>166.90€</p>
-                <button class="item_button">Voir le produits</button>
+            <div class="article_desc">
+                <div class="titre_desc">
+                    <h2>DISPLAY EV06 - MASCARADE CRÉPUSCULAIRE</h2>
+                    <p class="description">Display Pokémon EV06 - Écarlate et Violet Mascarade Crépusculaire en version
+                        française. Date de sortie prévue 24 Mai 2024.</p>
+                </div>
+                <p class="prix">166,90 €</p>
+                <div class="quantity">
+                    <p>Quantité</p>
+                    <span id="decrease">-</span>
+                   
+                        <input type="number" id="quantity" name="quantity" min="0" max="100" value="1">
+                
+                    <span id="increase">+</span>
+                </div>
+                <button class="item_button">Ajouter au panier</button>
             </div>
-            <div class="article">
-                <h3>Pokemon</h3>
-                <p class="cat_item">Display Pokemon</p>
-                <img class="article_img" src="assets/img/display.png" alt="">
-                <h2>DISPLAY EV06 - MASCARADE CRÉPUSCULAIRE</h2>
-                <p>166.90€</p>
-                <button class="item_button">Voir le produits</button>
-            </div>
-            <div class="article">
-                <h3>Pokemon</h3>
-                <p class="cat_item">Display Pokemon</p>
-                <img class="article_img" src="assets/img/display.png" alt="">
-                <h2>DISPLAY EV06 - MASCARADE CRÉPUSCULAIRE</h2>
-                <p>166.90€</p>
-                <button class="item_button">Voir le produits</button>
-            </div>
-           
         </div>
     </main>
     <footer>
         <img src="assets/img/LogoSite.png" alt="">
     </footer>
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>
