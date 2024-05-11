@@ -21,7 +21,7 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 15px;
 }
 
 .choice_button {
@@ -59,6 +59,7 @@ main {
     display: flex;
     width: 100%;
 justify-content: space-between;
+align-items: center;
 }
 
 .article_all {
@@ -69,11 +70,13 @@ justify-content: space-between;
 }
 
 #article_un {
-width: 100%;
+    width: 100%;
 }
 
 .img_article {
     width: 15%;
+    display: flex;
+    justify-content: center;
 }
 
 .article_line {
@@ -85,8 +88,8 @@ width: 100%;
 
 .prix_all {
     width: 30%;
-    border: 1px solid #BB1722 ;
-    background-color: #BB1722;
+    border: 1px solid #4D0000 ;
+    background-color: #4D0000;
     border-radius: 20px;
     color : white;
     font-family: 'Rubik_Light';
@@ -103,6 +106,7 @@ h2 {
     width: 100%;
     display: flex;
     gap: 20px;
+    color: #4D0000;
 }
 
 
@@ -116,8 +120,6 @@ h2 {
     justify-content: space-evenly;
     border-bottom-style: double;
 }
-
-
 
 
 .prix_ttc_ctn {
@@ -155,3 +157,8 @@ h2 {
     font-family: 'Rubik_Light';
     font-size: 1em;
 }
+
+.prix_desc {
+    color : #F9B142;
+}
+

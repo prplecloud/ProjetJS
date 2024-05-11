@@ -12,7 +12,7 @@
     margin-bottom: 10px;
     border: solid 1px white;
     border-radius: 10px;
-    width: 80%;
+    width: 90%;
     box-shadow: 0 0 5px #808080;
     background-color: white;
 }
@@ -22,8 +22,9 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 15px;
 }
+
 .choice_button {
     width: 100%;
   display: flex;
@@ -41,15 +42,25 @@ main {
     
 }
 
+.main_ctn {
+    border: solid 1px white;
+    box-shadow: 0 0 5px #808080;
+    background-color: white;
+    width: 89%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 50px 0;
+    padding: 10px;
+    color: #4D0000;
+}
+
 .articles {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
-    border: solid 1px white;
-    border-radius: 10px;
-    width: 80%;
-    box-shadow: 0 0 5px #808080;
-    background-color: white;
+    width: 100%;
     flex-wrap: wrap;
    padding: 10px 0;
    margin: 20px 0;
@@ -60,7 +71,7 @@ main {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    width: 50%;
+    width: 33%;
     padding: 10px 0;
 }
 
@@ -93,6 +104,23 @@ h3 {
 }
 
 .article_img {
-    width: 100%;
+    width: 20%;
     border-radius: 10px;
+}
+
+.titre1 {
+    font-size: 2em;
+    font-family: 'Rubik_Light';
+    margin: 20px 0 0 20px ;
+}
+
+.titre2 {
+    font-size: 3em;
+    margin: 0 0 0 20px ;
+}
+
+h4 {
+    font-size: 1.5em;
+    font-family: 'rubik_light';
+    text-align: center;
 }
