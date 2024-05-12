@@ -262,6 +262,7 @@ left: 50px;
     display: flex;
     justify-content: space-around;
     margin: 20px 0;
+    width: 50%;
 }
 
 .name_desc {
