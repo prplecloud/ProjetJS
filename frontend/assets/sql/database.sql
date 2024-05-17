@@ -52,6 +52,7 @@ CREATE TABLE products(
    name VARCHAR(255),
    price DECIMAL(15,2),
    stock INT,
+   image VARCHAR(255),
    description TEXT,
    illustrations VARCHAR(50),
    réduction DECIMAL(15,2),
