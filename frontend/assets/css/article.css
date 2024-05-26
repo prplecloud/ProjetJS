@@ -12,7 +12,7 @@
     margin-bottom: 10px;
     border: solid 1px white;
     border-radius: 10px;
-    width: 80%;
+    width: 83%;
     box-shadow: 0 0 5px #808080;
     background-color: white;
 }
@@ -22,13 +22,13 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 15px;
+    margin-top: 30px;
 }
 
 .choice_button {
     width: 100%;
-  display: flex;
-  justify-content: space-around;
+    display: flex;
+    justify-content: space-around;
 }
 
 .cat_img {
@@ -39,7 +39,7 @@ main {
 .cat_img:hover {
     cursor: pointer;
     transform: scale(1.1);
-    
+
 }
 
 .main_ctn {
@@ -51,17 +51,19 @@ main {
     display: flex;
     justify-content: center;
     margin: 50px 0;
-    padding: 10px;
+    padding: 30px;
 }
 
 .article_desc {
     display: flex;
     justify-content: space-around;
     flex-direction: column;
+    width: 50%;
 }
 
 .prix {
     font-size: 3em;
+    letter-spacing: 2px;
 }
 
 .article_img {
@@ -72,7 +74,8 @@ main {
 }
 
 #img_article {
-    width: 50%;
+    width: 60%;
+    max-height: 600px;
 }
 
 .item_button {
@@ -99,7 +102,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 #decrease {
-    color: #f9b142  ;
+    color: #f9b142;
     border: 3px solid #f9b142;
     border-radius: 50%;
     padding: 15px 20px;
@@ -113,7 +116,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 #increase {
-    color: #f9b142  ;
+    color: #f9b142;
     border: 3px solid #f9b142;
     border-radius: 50%;
     padding: 15px 20px;
@@ -127,7 +130,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .quantity {
-  display: flex;
+    display: flex;
     gap: 10px;
 }
 
@@ -137,7 +140,8 @@ input[type="number"]::-webkit-outer-spin-button {
     font-size: 1.5em;
     border: 3px solid #f9b142;
     border-radius: 50%;
-    color:  #f9b142; ;
+    color: #f9b142;
+    ;
     font-family: 'Rubik_Black';
 }
 
@@ -152,28 +156,34 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .images_ctn {
-    width: 80%;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 
 .description {
     font-family: 'Rubik_Light';
+    display: flex;
+    flex-direction: column;
 }
 
 #left {
     position: relative;
     font-size: 2em;
     cursor: pointer;
-  user-select: none;
-  right: 50px;
+    user-select: none;
+    right: 50px;
 }
 
 #right {
-position: relative;
-font-size: 2em;
-cursor: pointer;
-user-select: none;
-left: 50px;
+    position: relative;
+    font-size: 2em;
+    cursor: pointer;
+    user-select: none;
+    left: 50px;
 }
 
 #left:hover {
@@ -240,22 +250,14 @@ left: 50px;
     font-size: 3em;
 }
 
-.caract > * {
+.caract>* {
     display: flex;
-    justify-content: space-between;
     font-size: 0.75em;
     font-family: 'Rubik_Light';
 }
 
-.langue, .license {
-    background-color: #FFE314;
-    padding: 10px;
-
-}
-
-.edition, .etat {
-    background-color: #F9B142;
-    padding: 10px;
+.txt {
+    width: 70%;
 }
 
 .sub_img_ctn {
@@ -268,4 +270,21 @@ left: 50px;
 .name_desc {
     padding: 10px;
     font-family: 'Rubik_Light';
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.color1 {
+    background-color: #FFE314;
+    padding: 10px;
+
+}
+
+.color2 {
+    background-color: #f9b142;
+    padding: 10px;
 }

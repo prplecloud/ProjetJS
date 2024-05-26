@@ -1,10 +1,12 @@
+const { query } = require('express');
 const pool = require('../config/database');
 
 exports.getProducts = (req, res) => {
     const query = `
-      SELECT p.*, c.name as category_name
-      FROM products p
-      JOIN categories c ON p.categories_id = c.categories_id
+    SELECT p.*, c.name as category_name, l.name as licence_name
+    FROM products p
+    JOIN categories c ON p.categories_id = c.categories_id
+    JOIN Licence l ON p.licence_id = l.licence_id
     `;
     pool.query(query, (error, results) => {
       if (error) {
@@ -17,7 +19,23 @@ exports.getProducts = (req, res) => {
 
 exports.getProductById = (req, res) => {
   const { id } = req.params;
-  pool.query('SELECT * FROM products WHERE products_id = ?', [id], (error, results) => {
+  const query = `
+  SELECT p.*, 
+         e.name as edition_name, 
+         l.name as licence_name, 
+         s.name as state_name, 
+         g.name as langage_name, 
+         c.name as category_name
+  FROM products p
+  JOIN edition e ON p.edition_id = e.edition_id
+  JOIN Licence l ON p.licence_id = l.licence_id
+  JOIN state s ON p.state_id = s.state_id
+  JOIN langage g ON p.langage_id = g.langage_id
+  JOIN categories c ON p.categories_id = c.categories_id
+  WHERE p.products_id = ?
+  `;
+
+  pool.query(query, [id], (error, results) => {
     if (error) {
       return res.status(500).json({ error: error.message });
     }
@@ -30,7 +48,14 @@ exports.getProductById = (req, res) => {
 
 exports.getProductsByCategories = (req, res) => {
     const { id } = req.params;
-    pool.query('SELECT * FROM products WHERE categories_id = ?', [id], (error, results) => {
+    const query = `
+    SELECT p.*, c.name as category_name, l.name as licence_name
+    FROM products p
+    JOIN categories c ON p.categories_id = c.categories_id
+    JOIN Licence l ON p.licence_id = l.licence_id
+    WHERE p.categories_id = ?
+    `;
+    pool.query(query, [id], (error, results) => {
       if (error) {
         return res.status(500).json({ error: error.message });
       }
@@ -69,7 +94,13 @@ exports.getProductsByCategories = (req, res) => {
 
   exports.getProductByLicence = (req, res) => {
     const { id } = req.params;
-    pool.query('SELECT * FROM products WHERE licence_id = ?', [id], (error, results) => {
+    const query = `SELECT p.*, c.name as category_name, l.name as licence_name
+    FROM products p
+    JOIN categories c ON p.categories_id = c.categories_id
+    JOIN Licence l ON p.licence_id = l.licence_id
+    WHERE p.licence_id = ?`
+
+    pool.query(query, [id], (error, results) => {
       if (error) {
         return res.status(500).json({ error: error.message });
       }
@@ -102,5 +133,11 @@ exports.getBoosters = (req, res) => {
     });
   };
 
-  
-
+exports.getCategories = (req, res) => {
+  pool.query('SELECT * FROM categories', (error, results) => {
+    if (error) {
+      return res.status(500).json({ error: error.message });
+    }
+    res.json(results);
+  });
+}

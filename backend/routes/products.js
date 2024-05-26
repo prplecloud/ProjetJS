@@ -11,6 +11,6 @@ router.get('/products/licence/:id', controllers.getProductByLicence);
 router.get('/products/editions/:id', controllers.getProductByEdition);
 router.get('/products/states/:id', controllers.getProductByState);
 router.get('/boosters', controllers.getBoosters);
-
+router.get('/categories', controllers.getCategories);
 
 module.exports = router;

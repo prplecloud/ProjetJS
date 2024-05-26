@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cartes à collectioner - Blazing Fail</title>
     <link rel="stylesheet" href="assets/css/header.css">
-    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/categorie.css">
 </head>
-
 <body>
     <header>
         <a class="logo" href="index.html">
             <img id="logo" src="assets/img/LogoSite.png" alt="">
         </a>
         <ul>
-            <li><a class="nav" href="categorie.html?categories=2">Carte à l'unité</a></li>
-            <li><a class="nav" href="categorie.html?categories=1">Booster</a></li>
-            <li><a class="nav" href="categorie.html?categories=7">Accessoires</a></li>
+            <li><a class="nav" href="#" data-category-id="2">Carte à l'unité</a></li>
+            <li><a class="nav" href="#" data-category-id="1">Booster</a></li>
+            <li><a class="nav" href="#" data-category-id="7">Accessoires</a></li>
         </ul>
+        
         <form action="/recherche" method="GET" class="search">
             <input type="text" id="recherche" name="query" placeholder="Rechercher" required class="search_bar">
         </form>
@@ -40,6 +40,7 @@
                 <a href="licence.html?licence=1" class="category-link" data-licence="Pokemon"><img class="cat_img" src="assets/img/LogoPkm.png" alt=""></a>
                 <a href="licence.html?licence=2" class="category-link" data-licence="Yu-Gi-Oh"><img class="cat_img" src="assets/img/LogoYGO.png" alt=""></a>
             </div>
+        </div>
         </div>
         <div class="main_ctn">
             <div class="articles"></div>
@@ -63,7 +64,7 @@
             <p><a class="nav" href="">Plan du site</a></p>
         </div>
     </footer>
-    <script src="assets/js/index.js"></script>
+    <script src="assets/js/categorie.js"></script>
 </body>
 
 </html>
