@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 <html lang="fr">
 
 <head>
@@ -12,13 +11,13 @@
 
 <body>
     <header>
-        <a class="logo" href="http://localhost:8080/liste">
+        <a class="logo" href="index.html">
             <img id="logo" src="assets/img/LogoSite.png" alt="">
         </a>
         <ul>
-            <li><a class="nav" href="http://localhost:8080/liste">Carte à l'unité</a></li>
-            <li><a class="nav" href="http://localhost:8080/liste">Booster</a></li>
-            <li><a class="nav" href="http://localhost:8080/liste">Accessoires</a></li>
+            <li><a class="nav" href="categorie.html?categories=2">Carte à l'unité</a></li>
+            <li><a class="nav" href="categorie.html?categories=1">Booster</a></li>
+            <li><a class="nav" href="categorie.html?categories=7">Accessoires</a></li>
         </ul>
         <form action="/recherche" method="GET" class="search">
             <input type="text" id="recherche" name="query" placeholder="Rechercher" required class="search_bar">
@@ -38,77 +37,59 @@
     <main>
         <div class="choice">
             <div class="choice_button">
-                <a href=""><img class="cat_img" src="assets/img/LogoPkm.png" alt=""></a>
-                <a href=""><img class="cat_img" src="assets/img/LogoYGO.png" alt=""></a>
+                <a href="licence.html?licence=1" class="category-link" data-licence="Pokemon"><img class="cat_img"
+                        src="assets/img/LogoPkm.png" alt=""></a>
+                <a href="licence.html?licence=2" class="category-link" data-licence="Yu-Gi-Oh"><img class="cat_img"
+                        src="assets/img/LogoYGO.png" alt=""></a>
             </div>
         </div>
         <div class="main_ctn">
             <div class="images_ctn">
                 <div class="article_img">
-                    <span id="left"><</span>
-                            <img id="img_article" src="assets/img/articles/Pokemon/booster/booster-6-1.jpg" alt="">
-                            <span id="right">></span>
+                    <img id="img_article" src="" alt="">
                 </div>
                 <div class="sub_img_ctn">
-                    <img class="sub_img" src="assets/img/articles/Pokemon/booster/booster-6-2.jpg" alt="">
-                    <img class="sub_img" src="assets/img/articles/Pokemon/booster/booster-6-3.jpg" alt="">
-                    <img class="sub_img" src="assets/img/articles/Pokemon/booster/booster-6-4.jpg" alt="">
                 </div>
             </div>
             <div class="article_desc">
                 <div class="titre_desc">
-                    <h2>DISPLAY EV06 - MASCARADE CRÉPUSCULAIRE</h2>
-                    <p class="description">Display Pokémon EV06 - Écarlate et Violet Mascarade Crépusculaire en version
-                        française. Date de sortie prévue 24 Mai 2024.</p>
+                    <h2 id="product_name"></h2>
+                    <p class="description" id="product_description"></p>
                 </div>
-                <p class="prix">166,90 €</p>
+                <p class="prix" id="product_price"></p>
                 <div class="quantity">
                     <p>Quantité</p>
                     <span id="decrease">-</span>
-                    <input type="number" id="quantity" name="quantity" min="0" max="100" value="1">
+                    <input type="number" id="quantity" name="quantity" min="1" max="100" value="1">
                     <span id="increase">+</span>
                 </div>
+                <div id="product_stock"></div>
                 <div class="button">
                     <button class="item_button">Ajouter au panier</button>
                 </div>
                 <div class="caract">
                     <div class="langue">
-                        <p>Langue:</p>
-                        <p>Francaise</p>
+                        <p class="txt">Langue: </p>
+                        <p id="data1"></p>
                     </div>
                     <div class="edition">
-                        <p>Edition:</p>
-                        <p>Force Temporelles</p>
+                        <p class="txt">Edition:</p>
+                        <p id="data2"></p>
                     </div>
-                    <div class="license">
-                        <p>Licence:</p>
-                        <p>Pokemon</p>
+                    <div class="licence">
+                        <p class="txt">Licence:</p>
+                        <p id="data3"></p>
                     </div>
                     <div class="etat">
-                        <p>Etat:</p>
-                        <p>Neuf</p>
+                        <p class="txt">Etat:</p>
+                        <p id="data4"></p>
                     </div>
                 </div>
             </div>
         </div>
     </main>
     <footer>
-        <div class="contact">
-            <h1>Nous Contacter</h1>
-            <p>Blazing Fail</p>
-            <p>740 Chemin de la Badesse</p>
-            <p>13290 Aix-en-Provence</p>
-            <p>04 42 97 00 00</p>
-            <p>France Metropolitaine</p>
-        </div>
-        <img class="img_footer" src="assets/img/LogoSite.png" alt="">
-        <div class="info">
-            <h1>Informations</h1>
-            <p><a class="nav" href="">Qui sommes-nous</a></p>
-            <p><a class="nav" href="">CGV</a></p>
-            <p><a class="nav" href="">Contactez-nous</a></p>
-            <p><a class="nav" href="">Plan du site</a></p>
-        </div>
+        <img src="assets/img/LogoSite.png" alt="">
     </footer>
     <script src="assets/js/article.js"></script>
 </body>

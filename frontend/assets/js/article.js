@@ -1,96 +1,166 @@
-var quantityInput = document.getElementById("quantity");
-var decreaseButton = document.querySelector("#decrease");
-var increaseButton = document.querySelector("#increase");
-
-decreaseButton.addEventListener("click", function () {
-    decrementQuantity();
-});
-
-increaseButton.addEventListener("click", function () {
-    incrementQuantity();
-});
-
-function decrementQuantity() {
-    var currentValue = parseInt(quantityInput.value);
-    if (currentValue > 0) {
-        quantityInput.value = currentValue - 1;
-    }
-}
-
-function incrementQuantity() {
-    var currentValue = parseInt(quantityInput.value);
-    if (currentValue < parseInt(quantityInput.max)) {
-        quantityInput.value = currentValue + 1;
-    }
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-    // Sélectionnez l'image principale
-    var mainImage = document.getElementById('img_article');
-    
-    // Sélectionnez toutes les images avec la classe "sub_img"
-    var subImages = document.querySelectorAll('.sub_img');
-    
-    
-    // Parcourez chaque image et ajoutez un écouteur d'événements de clic
-    subImages.forEach(function(image) {
-        image.addEventListener('click', function() {
-            // Récupérez le chemin de l'image cliquée
-            var clickedImagePath = image.getAttribute('src');
-            
-            // Récupérez le chemin de l'image principale avant le changement
-            var currentMainImagePath = mainImage.getAttribute('src');
-            
-            // Si le chemin de l'image principale n'est pas celui de l'image cliquée
-            if (currentMainImagePath !== clickedImagePath) {
-                // Remplacez le chemin de l'image principale par celui de l'image cliquée
-                mainImage.setAttribute('src', clickedImagePath);
-                
-                // Placez l'URL de l'image principale initiale dans l'image cliquée
-                image.setAttribute('src', currentMainImagePath);
-            }
-        });
-    });
-});
-
 document.addEventListener('DOMContentLoaded', function() {
-    var imgArticle = document.getElementById('img_article');
+    var quantityInput = document.getElementById("quantity");
+    var decreaseButton = document.querySelector("#decrease");
+    var increaseButton = document.querySelector("#increase");
+
+    if (decreaseButton && increaseButton) {
+        decreaseButton.addEventListener("click", function () {
+            decrementQuantity();
+        });
+
+        increaseButton.addEventListener("click", function () {
+            incrementQuantity();
+        });
+    }
+
+    function decrementQuantity() {
+        var currentValue = parseInt(quantityInput.value);
+        if (currentValue > 1) {
+            quantityInput.value = currentValue - 1;
+        }
+    }
+
+    function incrementQuantity() {
+        var currentValue = parseInt(quantityInput.value);
+        var stock = parseInt(document.getElementById('product_stock').textContent.split(': ')[1]);
+        if (currentValue < stock) {
+            quantityInput.value = currentValue + 1;
+        }
+    }
+
+    var mainImage = document.getElementById('img_article');
     var subImages = document.querySelectorAll('.sub_img');
+
+    if (mainImage && subImages) {
+        subImages.forEach(function(image) {
+            image.addEventListener('click', function() {
+                var clickedImagePath = image.getAttribute('src');
+                var currentMainImagePath = mainImage.getAttribute('src');
+
+                if (currentMainImagePath !== clickedImagePath) {
+                    mainImage.setAttribute('src', clickedImagePath);
+                    image.setAttribute('src', currentMainImagePath);
+                }
+            });
+        });
+    }
 
     var currentIndex = 0;
 
-    // Écouteurs d'événements pour les flèches
-    document.getElementById('left').addEventListener('click', function() {
-        currentIndex = (currentIndex === 0) ? subImages.length - 1 : currentIndex - 1;
-        swapImages();
-    });
+    var leftButton = document.getElementById('left');
+    var rightButton = document.getElementById('right');
 
-    document.getElementById('right').addEventListener('click', function() {
-        currentIndex = (currentIndex === subImages.length - 1) ? 0 : currentIndex + 1;
-        swapImages();
-    });
+    if (leftButton && rightButton) {
+        leftButton.addEventListener('click', function() {
+            currentIndex = (currentIndex === 0) ? subImages.length - 1 : currentIndex - 1;
+            swapImages();
+        });
 
-    // Fonction pour échanger les sources des images
+        rightButton.addEventListener('click', function() {
+            currentIndex = (currentIndex === subImages.length - 1) ? 0 : currentIndex + 1;
+            swapImages();
+        });
+    }
+
     function swapImages() {
-        var tempSrc = imgArticle.src;
-        imgArticle.src = subImages[currentIndex].src;
+        var tempSrc = mainImage.src;
+        mainImage.src = subImages[currentIndex].src;
         subImages[currentIndex].src = tempSrc;
     }
-});
 
-document.getElementById('img_article').addEventListener('click', function() {
-    var fullscreenImage = document.createElement('div');
-    fullscreenImage.classList.add('fullscreen-image');
-    var closeButton = document.createElement('span');
-    closeButton.classList.add('close-button');
-    closeButton.innerHTML = '&times;';
-    fullscreenImage.appendChild(closeButton);
-    var img = document.createElement('img');
-    img.src = this.src;
-    fullscreenImage.appendChild(img);
-    document.body.appendChild(fullscreenImage);
+    mainImage.addEventListener('click', function() {
+        var fullscreenImage = document.createElement('div');
+        fullscreenImage.classList.add('fullscreen-image');
+        var closeButton = document.createElement('span');
+        closeButton.classList.add('close-button');
+        closeButton.innerHTML = '&times;';
+        fullscreenImage.appendChild(closeButton);
+        var img = document.createElement('img');
+        img.src = this.src;
+        fullscreenImage.appendChild(img);
+        document.body.appendChild(fullscreenImage);
 
-    closeButton.addEventListener('click', function() {
-        fullscreenImage.remove();
+        closeButton.addEventListener('click', function() {
+            fullscreenImage.remove();
+        });
     });
+
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get('id');
+    const productUrl = `http://localhost:3000/api/products/${productId}`;
+
+    function displayProductDetails(product) {
+        document.getElementById('product_name').textContent = product.name;
+        const descriptionElement = document.getElementById('product_description');
+        const fullDescription = product.description;
+        if (fullDescription.length > 150) {
+            const shortDescription = fullDescription.substring(0, 150) + '...';
+            descriptionElement.textContent = shortDescription;
+
+            const moreSpan = document.createElement('span');
+            moreSpan.textContent = ' more';
+            moreSpan.style.color = 'blue';
+            moreSpan.style.cursor = 'pointer';
+            descriptionElement.appendChild(moreSpan);
+
+            moreSpan.addEventListener('click', function() {
+                descriptionElement.textContent = fullDescription;
+            });
+        } else {
+            descriptionElement.textContent = fullDescription;
+        }
+        document.getElementById('product_stock').textContent = `Stock: ${product.stock}`;
+        document.getElementById('product_price').textContent = `Prix: ${product.price} €`;
+        document.getElementById('img_article').src = product.image_url;
+        document.getElementById('img_article').alt = product.name;
+
+        if (product.langage_name && product.langage_name !== 'N/A') {
+            document.getElementById('data1').textContent = product.langage_name;
+        } else {
+            document.querySelector('.langue').style.display = 'none';
+        }
+
+        if (product.edition_name && product.edition_name !== 'N/A') {
+            document.getElementById('data2').textContent = product.edition_name;
+        } else {
+            document.querySelector('.edition').style.display = 'none';
+        }
+
+        if (product.licence_name && product.licence_name !== 'N/A') {
+            document.getElementById('data3').textContent = product.licence_name;
+        } else {
+            document.querySelector('.licence').style.display = 'none';
+        }
+
+        if (product.state_name && product.state_name !== 'N/A') {
+            document.getElementById('data4').textContent = product.state_name;
+        } else {
+            document.querySelector('.etat').style.display = 'none';
+        }
+        const caracterDivs = document.querySelectorAll('.caract > div');
+
+        let visibleIndex = 0;
+
+        for (let i = 0; i < caracterDivs.length; i++) {
+
+            if (caracterDivs[i].style.display !== 'none' && window.getComputedStyle(caracterDivs[i]).display !== 'none') {
+              
+                if (visibleIndex % 2 === 0) {
+                    caracterDivs[i].classList.add('color1');
+                    caracterDivs[i].classList.remove('color2');
+                } else {
+                    caracterDivs[i].classList.add('color2');
+                    caracterDivs[i].classList.remove('color1');
+                }
+                visibleIndex++; 
+            }
+        }
+    }
+
+    fetch(productUrl)
+        .then(response => response.json())
+        .then(data => displayProductDetails(data))
+        .catch(error => {
+            console.error("Erreur lors de la récupération des détails du produit :", error);
+        });
 });

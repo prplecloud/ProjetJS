@@ -3,10 +3,12 @@ const app = express();
 const cors = require('cors');
 const port = 3000;
 
-
 app.use(cors());
+const productsRoutes = require('./routes/products');
 
-const sneakersRoutes = require('./routes/controllers');
-app.use(sneakersRoutes);
+app.use('/api', productsRoutes);
 
-app.listen(port, () => console.log(`Server is running on port ${port}`));
+
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});
