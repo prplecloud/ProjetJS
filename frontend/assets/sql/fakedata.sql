@@ -5,7 +5,7 @@ INSERT INTO `licence`(`name`)
 VALUES ("Pokémon"), ("Yu-Gi-Oh!");
 
 INSERT INTO `langage`(`name`) 
-VALUES ("Français"), ("Anglais"), ("Allemand"), ("Espagnol") ("N/A");
+VALUES ("Français"), ("Anglais"), ("Allemand"), ("Espagnol"), ("N/A");
 
 INSERT INTO `categories`(`name`) 
 VALUES ("Booster"), ("Cartes"), ("Blister"), ("Coffret"), ("Tin-box"), ("Metal-box"), ("Accessoires");
@@ -20,9 +20,9 @@ VALUES
 ("BOOSTER L'ERE DU SEIGNEUR SUPREME - YU-GI-OH! FR", 5.99, 10, "assets/img/articles/Yu-Gi-Oh/Booster/Français/AGOV1FR.jpg", "Paquet de 9 cartes Yu-Gi-Oh! en français de l'édition L'Ère du Seigneur Suprême. Cette édition inclut 100 cartes dont 14 Ultra Rares et 10 Secret Rares." , 0, 2, 2, 1, 1, 1),
 ("BOOSTER HERITAGE DE LA DESTRUCTION - YU-GI-OH! FR", 5.99, 10, "assets/img/articles/Yu-Gi-Oh/Booster/Français/LEDE1FR.jpg", "Paquet de 9 cartes Yu-Gi-Oh! en français de l'édition Héritage de la Destruction. Elle inclut 100 cartes différentes dont 14 Ultra Rare et 10 Secret Rare." , 0, 3, 2, 1, 1, 1),
 ("BOOSTER CAUCHEMAR FANTOME - YU-GI-OH! FR", 5.99, 10, "assets/img/articles/Yu-Gi-Oh/Booster/Français/PHNI1FR.jpg", "Paquet de 9 cartes Yu-Gi-Oh! en français de l'édition Cauchemar Fantome. Elle inclut 100 cartes différentes dont 14 Ultra Rare et 10 Secret Rare." , 0, 4, 2, 1, 1, 1),
-("BOOSTER DUELLISTE LEGENDAIRE - YU-GI-OH! FR", 2.99, 10, "assets/img/articles/Yu-Gi-Oh/Booster/Français/DL1FR.jpg", "Paquet de 5 cartes Yu-Gi-Oh! en français de l'extension Duellistes Légendaires : Volcan Brûleur d'Âmes. Cette édition contient 62 cartes différentes." , 0, 5, 2, 1, 1, 1),
+("BOOSTER DUELLISTE LEGENDAIRE - YU-GI-OH! FR", 2.99, 10, "assets/img/articles/Yu-Gi-Oh/Booster/Français/LD1FR.jpg", "Paquet de 5 cartes Yu-Gi-Oh! en français de l'extension Duellistes Légendaires : Volcan Brûleur d'Âmes. Cette édition contient 62 cartes différentes." , 0, 5, 2, 1, 1, 1),
 ("BOOSTER INCROYABLES DEFENSEURS - YU-GI-OH! FR", 5.99, 10, "assets/img/articles/Yu-Gi-Oh/Booster/Français/AMDE1FR.jpg", "Paquet de 7 cartes Yu-Gi-Oh! en français de l'édition Incroyables Défenseurs. Elle inclut 60 cartes différentes dont 10 Ultra Rare et 15 Super Rare." , 0, 6, 2, 1, 1, 1),
-("BOOSTER NEXUS DU DUELLISTE - YU-GI-OH! FR", 5.99, 50, "assets/img/articles/Yu-Gi-Oh/Booster/Français/DUNEFR.jpg", "Paquet de 9 cartes Yu-Gi-Oh! en français de l'édition Nexus du Duelliste. Elle inclut 100 cartes différentes dont 14 Ultra Rare et 10 Secret Rare." , 0, 7, 2, 1, 1, 1),
+("BOOSTER NEXUS DU DUELLISTE - YU-GI-OH! FR", 5.99, 50, "assets/img/articles/Yu-Gi-Oh/Booster/Français/DUNE1FR.jpg", "Paquet de 9 cartes Yu-Gi-Oh! en français de l'édition Nexus du Duelliste. Elle inclut 100 cartes différentes dont 14 Ultra Rare et 10 Secret Rare." , 0, 7, 2, 1, 1, 1),
 ("BOOSTER LE LABYRINTHE DU MILLENAIRE - YU-GI-OH! FR", 5.99, 10, "assets/img/articles/Yu-Gi-Oh/Booster/Français/MZMI1FR.jpg", "Paquet de 7 cartes Yu-Gi-Oh! en français de l'édition Le labyrinthe du Millénaire. Cette édition inclut 85 cartes dont 11 Ultra Rares et 16 Super Rares." , 0, 8, 2, 1, 1, 1),
 ("VALIANT SMASHERS BOOSTER PACK - YU-GI-OH!", 5.99, 10, "assets/img/articles/Yu-Gi-Oh/Booster/English/VASM1ENG.png", "Paquet de 7 cartes Yu-Gi-Oh! en anglais de l'édition Valiant Smashers. Elle inclut 60 cartes différentes dont 10 Ultra Rares et 15 Super Rares." , 0, 1, 2, 1, 1, 1), 
 ("AGE OF OVERLORD BOOSTER PACK - YU-GI-OH!", 5.99, 10, "assets/img/articles/Yu-Gi-Oh/Booster/English/AGOV1ENG.png", "Paquet de 9 cartes Yu-Gi-Oh! en anglais de l'édition Age of Overlord. Cette édition inclut 100 cartes dont 14 Ultra Rares et 10 Secret Rares." , 0, 2, 2, 1, 1, 1),
@@ -31,7 +31,7 @@ VALUES
 ("LEGENDARY DUELISTS BOOSTER PACK - YU-GI-OH!", 2.99, 10, "assets/img/articles/Yu-Gi-Oh/Booster/English/LD1ENG.png", "Paquet de 5 cartes Yu-Gi-Oh! en anglais de l'extension Legendary Duelists : Volcan Brûleur d'Âmes. Cette édition contient 62 cartes différentes." , 0, 5, 2, 1, 1, 1),
 ("AMAZING DEFENDERS BOOSTER PACK - YU-GI-OH!", 5.99, 10, "assets/img/articles/Yu-Gi-Oh/Booster/English/AMDE1ENG.png", "Paquet de 7 cartes Yu-Gi-Oh! en anglais de l'édition Amazing Defenders. Elle inclut 60 cartes différentes dont 10 Ultra Rare et 15 Super Rare." , 0, 6, 2, 1, 1, 1),
 ("DUELIST NEXUS BOOSTER PACK - YU-GI-OH!", 5.99, 50, "assets/img/articles/Yu-Gi-Oh/Booster/English/DUNE1ENG.png", "Paquet de 9 cartes Yu-Gi-Oh! en anglais de l'édition Duelist Nexus. Elle inclut 100 cartes différentes dont 14 Ultra Rare et 10 Secret Rare." , 0, 7, 2, 1, 1, 1),
-("MAZE OF MILLENNIA BOOSTER PACK - YU-GI-OH!", 5.99, 10, "assets/img/articles/Yu-Gi-Oh/Booster/English/MZMI1ENG.png", "Paquet de 7 cartes Yu-Gi-Oh! en anglais de l'édition Maze of Millennia. Cette édition inclut 85 cartes dont 11 Ultra Rares et 16 Super Rares." , 0, 8, 2, 1, 1, 1)
+("MAZE OF MILLENNIA BOOSTER PACK - YU-GI-OH!", 5.99, 10, "assets/img/articles/Yu-Gi-Oh/Booster/English/MZMI1ENG.png", "Paquet de 7 cartes Yu-Gi-Oh! en anglais de l'édition Maze of Millennia. Cette édition inclut 85 cartes dont 11 Ultra Rares et 16 Super Rares." , 0, 8, 2, 1, 1, 1),
 ("Pokémon - Booster Français - EV05 - Ecarlate et Violet - Forces Temporelles", 5.30, 10, "assets/img/articles/Pokemon/booster/Français/forces-temporelles1FR.jpg", "Booster de 10 cartes.
 Les rangs des Pokémon Temps passé et Temps futur continuent de grossir. Serpente-Eau-ex se libère des chaînes du passé aux côtés d’Ire-Foudre-ex, tandis que Vert-de-Fer-ex impose une justice high-tech avec Chef-de-Fer-ex. À l’extérieur de la Zone Zéro, Triopikeau et Farigiraf changent de type en tant que Pokémon-ex Téracristal, et les Dresseurs et Dresseuses Pokémon du monde entier se préparent pour le retour des cartes HIGH-TECH aux effets puissants et uniques. Une brèche temporelle s’est ouverte, amenant avec elle des bêtes sauvages et des créatures futuristes dans l’extension Écarlate et Violet – Forces Temporelles du JCC Pokémon !
 Plus de 160 cartes :
@@ -62,7 +62,7 @@ Chaque boîte de Batailles de Légende : Chapitre 1 contient un grand total de :
 30 communes
 1 des 6 dés à collectionner" , 0, 15, 2, 1, 1, 4),
 
-("Yu-Gi-Oh! - Tin Box - Mega-tin 2023 : 25e Anniversaire - Les Héros du Duel", 19.90, 5, "assets/img/articles/Yu-Gi-Oh/Tin-box/Français/25thTin1FR.jpg", "Célébrez notre 25e anniversaire avec notre boîte 25e anniversaire : Dueling Heroes avec deux Secrète Prismatique Rares et une Secrète du Quart de Siècle Rare en bonus dans chaque boîte !
+("Yu-Gi-Oh! - Tin Box - Mega-tin 2023 : 25e Anniversaire - Les Héros du Duel", 19.90, 5, "assets/img/articles/Yu-Gi-Oh/Tin_box/Français/25thTin1FR.jpg", "Célébrez notre 25e anniversaire avec notre boîte 25e anniversaire : Dueling Heroes avec deux Secrète Prismatique Rares et une Secrète du Quart de Siècle Rare en bonus dans chaque boîte !
 
 Les Secrète Prismatique Rares sont l'une des choses que les Duellistes aiment le plus dans les Méga-Packs de chaque année, car les tins sont le SEUL endroit où l'on peut trouver ce type de rareté exclusif et magnifique. Et cette année, nous vous en offrons deux fois plus dans chaque boîte !
 
@@ -156,7 +156,7 @@ Plus de 170 cartes
 30 cartes aux illustrations spéciales du set analogue Galerie des Dresseurs
 Plus de 20 cartes Dresseur et une nouvelle carte Énergie spéciale
 
-VERSION FRANÇAISE" , 0, 13, 1, 1, 1, 1);
+VERSION FRANÇAISE" , 0, 13, 1, 1, 1, 1),
 
 ("Pokémon - Coffret - EV05 Ecarlate et Violet - Forces Temporelles - Dresseur d'Elite : Serpente-Eau", 54.90, 2, "assets/img/articles/Pokemon/coffrets/Forces-Temporelles1FR.jpg", "Les rangs des Pokémon Temps passé et Temps futur continuent de grossir.
 
