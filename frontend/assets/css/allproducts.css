@@ -56,8 +56,6 @@ main {
     margin-bottom: 10px;
     width: 100%;
     flex-wrap: wrap;
-    padding: 10px 0;
-    margin: 20px 0;
     gap: 30px;
 }
 
@@ -90,6 +88,7 @@ main {
     width: 30%;
     border-radius: 20px;
     padding: 20px;
+    height: 100%;
 }
 
 .tri_titre {
@@ -101,6 +100,7 @@ main {
    display: flex;
     justify-content: space-around;
     flex-direction: column;
+    font-family: 'rubik_light';
 }
 
 .tri {
@@ -116,7 +116,8 @@ main {
     display: flex;
     justify-content: center;
     gap: 10px;
-    flex-wrap: wrap
+    flex-wrap: wrap;
+    margin: 20px 0;
 }
 
 .product_name {
@@ -163,4 +164,29 @@ select {
     padding: 10px;
     border-radius: 10px;
     width: 75%;
+}
+
+.sub_title_tri {
+    letter-spacing: 2px;
+}
+
+.article_ctn {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.test {
+    width: 75%;
+}
+
+.svg1 {
+    width: 100px;
+    height: 20px;
+}
+
+.svg2 {
+    width: 230px;
+    
 }
