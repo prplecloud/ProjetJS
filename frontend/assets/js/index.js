@@ -5,7 +5,7 @@ function getProducts() {
         .then(response => response.json())
         .then(data => {
             console.log(data); 
-            displayProductsByLicence(data); // Afficher les produits par licence
+            displayProductsByLicence(data);
         })
         .catch(error => {
             console.error("Erreur lors de la récupération des produits :", error);
@@ -15,7 +15,6 @@ function getProducts() {
 document.addEventListener('DOMContentLoaded', getProducts);
 
 function displayProductsByLicence(products) {
-    // Organiser les produits par licence
     const productsByLicence = {};
 
     products.forEach(product => {
@@ -29,24 +28,21 @@ function displayProductsByLicence(products) {
     Object.keys(productsByLicence).forEach(licence => {
         const productsList = document.querySelector('.articles');
         
-        // Ajouter le titre "Sortie" avant le titre de la catégorie
         const sortieTitle = document.createElement('p');
         sortieTitle.classList.add('titre1');
         sortieTitle.textContent = 'Sorties';
         productsList.appendChild(sortieTitle);
 
 
-        // Ajouter le titre de la catégorie
         const categoryTitle = document.createElement('h2');
         categoryTitle.classList.add('titre2');
         categoryTitle.textContent = licence;
         productsList.appendChild(categoryTitle);
 
-        // Créer un conteneur pour chaque catégorie
         const categoryContainer = document.createElement('div');
         categoryContainer.classList.add('category_ctn');
 
-        const licenceProducts = productsByLicence[licence].slice(0, 10); // Sélectionner les 10 premiers produits
+        const licenceProducts = productsByLicence[licence].slice(0, 10);
 
         licenceProducts.forEach(product => {
             const productElement = document.createElement('div');

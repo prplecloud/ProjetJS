@@ -6,7 +6,7 @@
     margin-bottom: 10px;
     border: solid 1px white;
     border-radius: 10px;
-    width: 83%;
+    width: 94%;
     box-shadow: 0 0 5px #808080;
     background-color: white;
 }
@@ -40,7 +40,7 @@ main {
     border: solid 1px white;
     box-shadow: 0 0 5px #808080;
     background-color: white;
-    width: 79%;
+    width: 90%;
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -85,7 +85,7 @@ main {
 .tri_main_ctn {
     border: solid 1px #4D0000;
     background-color: #4D0000;
-    width: 30%;
+    width: 20%;
     border-radius: 20px;
     padding: 20px;
     height: 100%;
@@ -118,6 +118,7 @@ main {
     gap: 10px;
     flex-wrap: wrap;
     margin: 20px 0;
+    width: 90%;
 }
 
 .product_name {
@@ -189,4 +190,17 @@ select {
 .svg2 {
     width: 230px;
     
+}
+
+.cat {
+    color: #F9B142;
+}
+
+.product_name {
+    font-family: 'Rubik_Light';
+    font-size: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 95%;
 }
