@@ -68,3 +68,21 @@
 .contact-form .consentement a:hover {
     text-decoration: underline;
 }
+
+.form_ctn {
+    border: solid 1px white;
+    box-shadow: 0 0 5px #808080;
+    background-color: white;
+    width: 79%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+    padding: 30px;
+    gap: 10px;
+}
+
+.main_ctn {
+    display: flex;
+    justify-content: center;
+}
