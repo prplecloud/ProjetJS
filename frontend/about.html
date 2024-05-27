@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="fr">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cartes à collectioner - Blazing Fail</title>
+    <title>A Propos</title>
     <link rel="stylesheet" href="assets/css/header.css">
-    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/about.css">
 </head>
-
 <body>
     <header>
         <a class="logo" href="index.html">
@@ -20,7 +18,7 @@
             <li><a class="nav" href="categorie.html?categories=7">Accessoires</a></li>
         </ul>
         <form action="/recherche" method="GET" class="search">
-            <input type="text" id="recherche" name="search" placeholder="Rechercher" required class="search_bar">
+            <input type="text" id="recherche" name="query" placeholder="Rechercher" required class="search_bar">
         </form>
        
         <svg class="svg-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -34,17 +32,7 @@
         <path stroke="null" id="svg_2" d="M22.25 18c0-7.105 4.35-9 9.75-9s9.75 1.895 9.75 9"></path>
     </svg>
     </header>
-    <main>
-        <div class="choice">
-            <div class="choice_button">
-                <a href="licence.html?licence=1" class="category-link" data-licence="Pokemon"><img class="cat_img" src="assets/img/LogoPkm.png" alt=""></a>
-                <a href="licence.html?licence=2" class="category-link" data-licence="Yu-Gi-Oh"><img class="cat_img" src="assets/img/LogoYGO.png" alt=""></a>
-            </div>
-        </div>
-        <div class="main_ctn">
-            <div class="articles"></div>
-        </div>
-    </main>
+    
     <footer>
         <div class="contact">
             <h1>Nous Contacter</h1>
@@ -63,7 +51,6 @@
             <p><a class="nav" href="">Plan du site</a></p>
         </div>
     </footer>
-    <script src="assets/js/index.js"></script>
+    <script src="assets/js/categorie.js"></script>
 </body>
-
 </html>
