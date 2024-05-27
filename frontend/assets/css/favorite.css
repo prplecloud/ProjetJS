@@ -1,3 +1,7 @@
+@font-face {
+    font-family: 'Rubik_Light';
+    src: url(../font/Rubik-Light.ttf);
+}
 .main_ctn {
     border: solid 1px white;
     box-shadow: 0 0 5px #808080;
