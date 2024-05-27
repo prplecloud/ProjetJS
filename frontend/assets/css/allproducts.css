@@ -135,8 +135,8 @@ input[type="checkbox"] {
     display: inline-block;
     position: relative;
     cursor: pointer;
-    width: 10px;
-    height: 10px;
+    width: 20px;
+    height: 20px;
     border: 2px solid #ccc;
     border-radius: 3px; 
 }
@@ -203,4 +203,37 @@ select {
     overflow: hidden;
     text-overflow: ellipsis;
     width: 95%;
+}
+
+.coeur {
+    width: 10%;
+    cursor: pointer;
+}
+
+.tri_prix {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.form1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+    width: 70%;
+}
+
+#sort-form {
+    width: 100%;
+}
+
+.trier_title {
+    width: 50%;
+}
+
+.tri_sub_ctn[data-selected="true"] .checkbox::after {
+    content: '✕'; /* Unicode for cross */
+    color: red; /* Optional: color for the cross */
 }

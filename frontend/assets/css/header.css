@@ -131,3 +131,16 @@ svg {
 .contact > p {
     font-family: 'rubik_light';
 }
+
+.top_favorite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+}
+
+.coeur {
+    width: 10%;
+    cursor: pointer;
+}

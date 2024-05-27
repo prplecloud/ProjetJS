@@ -158,3 +158,8 @@ h4 {
     gap: 40px;
     margin: 20px 0;
 }
+
+.coeur {
+    width: 10%;
+    cursor: pointer;
+}
