@@ -16,6 +16,21 @@ exports.getProducts = (req, res) => {
     });
   };
 
+  exports.getProductsBySearch = (req, res) => {
+    const { search } = req.query;
+    const query = `SELECT p.*, c.name as category_name, l.name as licence_name
+                   FROM products p
+                   JOIN categories c ON p.categories_id = c.categories_id
+                   JOIN Licence l ON p.licence_id = l.licence_id
+                   WHERE p.name LIKE ?`;
+    pool.query(query, [`%${search}%`], (error, results) => {
+        if (error) {
+            return res.status(500).json({ error: error.message });
+        }
+        res.json(results);
+    });
+};
+
 
 exports.getProductById = (req, res) => {
   const { id } = req.params;
