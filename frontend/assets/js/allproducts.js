@@ -85,6 +85,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (filters.includes('filter-coffret-pokemon')) {
                 matches = matches || (category === 'Coffret' && licence === 'Pokémon');
             }
+            if (filters.includes('filter-blister-pokemon')) {
+                matches = matches || (category === 'Blister' && licence === 'Pokémon');
+            }
+            if (filters.includes('filter-accessoire-pokemon')) {
+                matches = matches || (category === 'Accessoires' && licence === 'Pokémon');
+            }
             if (filters.includes('filter-pokemon')) {
                 matches = matches || (licence === 'Pokémon');
             }
