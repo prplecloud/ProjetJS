@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 allProductsData = data;
                 displayAllProducts(allProductsData);
-                console.log(data)
+                console.log(data);
             })
             .catch(error => {
                 console.error("Erreur lors de la récupération des produits :", error);
@@ -37,6 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event listener for language select
     document.getElementById('language-select').addEventListener('change', (event) => {
         selectedLanguage = event.target.value;
+        applyFiltersAndSort(document.getElementById('sort-select').value);
+    });
+
+    // Event listener for clear filters button
+    document.getElementById('clear_filter').addEventListener('click', () => {
+        clearFilters();
         applyFiltersAndSort(document.getElementById('sort-select').value);
     });
 
@@ -75,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const licence = product.licence_name;
             const lang = product.langage_name;
 
-            let matches = filters.length === 0;
+            let matches = filters.length === 0; // If no filters, match all products by default
             if (filters.includes('filter-booster-pokemon')) {
                 matches = matches || (category === 'Booster' && licence === 'Pokémon');
             }
@@ -85,10 +91,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (filters.includes('filter-coffret-pokemon')) {
                 matches = matches || (category === 'Coffret' && licence === 'Pokémon');
             }
+            if (filters.includes('filter-tin-box-pokemon')) {
+                matches = matches || (category === 'Tin-box' && licence === 'Pokémon');
+            }
             if (filters.includes('filter-blister-pokemon')) {
                 matches = matches || (category === 'Blister' && licence === 'Pokémon');
             }
-            if (filters.includes('filter-accessoire-pokemon')) {
+            if (filters.includes('filter-accessoires-pokemon')) {
                 matches = matches || (category === 'Accessoires' && licence === 'Pokémon');
             }
             if (filters.includes('filter-pokemon')) {
@@ -97,20 +106,42 @@ document.addEventListener('DOMContentLoaded', () => {
             if (filters.includes('filter-ygo')) {
                 matches = matches || (licence === 'Yu-Gi-Oh!');
             }
+            if (filters.includes('filter-booster-ygo')) {
+                matches = matches || (category === 'Booster' && licence === 'Yu-Gi-Oh!');
+            }
+            if (filters.includes('filter-carte-ygo')) {
+                matches = matches || (category === 'Cartes' && licence === 'Yu-Gi-Oh!');
+            }
+            if (filters.includes('filter-coffret-ygo')) {
+                matches = matches || (category === 'Coffret' && licence === 'Yu-Gi-Oh!');
+            }
+            if (filters.includes('filter-tin-box-ygo')) {
+                matches = matches || (category === 'Tin-box' && licence === 'Yu-Gi-Oh!');
+            }
+            if (filters.includes('filter-blister-ygo')) {
+                matches = matches || (category === 'Blister' && licence === 'Yu-Gi-Oh!');
+            }
+            if (filters.includes('filter-accessoires-ygo')) {
+                matches = matches || (category === 'Accessoires' && licence === 'Yu-Gi-Oh!');
+            }
             
             if (language) {
                 matches = matches && (lang === language);
             }
 
-            console.log(`Product: ${product.name}`);
-            console.log(`Category: ${category}`);
-            console.log(`Licence: ${licence}`);
-            console.log(`Language: ${lang}`);
-            console.log(`Filters: ${filters}`);
-            console.log(`Matches: ${matches}`);
-
             return matches;
         });
+    }
+
+    function clearFilters() {
+        activeFilters = [];
+        selectedLanguage = '';
+
+        document.querySelectorAll('.tri_sub_ctn').forEach(filterDiv => {
+            filterDiv.setAttribute('data-selected', 'false');
+        });
+
+        document.getElementById('language-select').value = '';
     }
 
     function displayAllProducts(products) {

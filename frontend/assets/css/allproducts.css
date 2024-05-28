@@ -238,3 +238,8 @@ select {
     content: '✕'; /* Unicode for cross */
     color: red; /* Optional: color for the cross */
 }
+
+h4 {
+    font-family: 'Rubik_Light';
+    margin: 0;
+}
