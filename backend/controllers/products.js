@@ -114,7 +114,7 @@ exports.getProductsByCategories = (req, res) => {
 
   exports.getProductByLicence = (req, res) => {
     const { id } = req.params;
-    const query = `SELECT p.*, c.name as category_name, l.name as licence_name
+    const query = `SELECT p.*, c.name as categories_name, l.name as licence_name
     FROM products p
     JOIN categories c ON p.categories_id = c.categories_id
     JOIN Licence l ON p.licence_id = l.licence_id

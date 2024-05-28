@@ -30,7 +30,7 @@ function displayProducts(products) {
         <img class="coeur empty-heart" src="assets/img/heart/empty-heart.png" alt="coeur vide">
         </div>
             <p class="licence">${product.licence_name}</p>
-            <p class="cat">${product.category_name}</p>
+            <p class="cat">${product.categories_name}</p>
             <a href="article.html?id=${product.products_id}">
             <img class="article_img" src="${product.image_url}" alt="${product.name}">
             </a>
