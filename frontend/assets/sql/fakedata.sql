@@ -97,8 +97,8 @@ Chaque boîte contient au total* :
 
 Le méga-set de la Boîte Méga-Pack 2022 inclut principalement des cartes populaires sorties en 2021, parmi lesquelles Vortex Embrasé, Foudre Amplifiée, L'Aube de la Majesté, Explosion de la Destinée, et bien d'autres !" , 0, 0, 2, 1, 1, 5),
 
-("CARTE MEW VMAX 310HP FULL-ART DYNAMAX POINT DE FUSION", 15.99, 1, "assets/img/articles/Pokemon/carte/carte1.png", "Carte mew neuve" , 0, 15, 1, 2, 1, 2),
-("CARTE DRAGON POUSSIERE D'ETOILE COLLECTOR RARE", 29.99, 1, "assets/img/articles/Yu-Gi-Oh/carte/carte1.png", "Carte mew neuve" , 0, 15, 2, 1, 1, 2),
+("CARTE MEW VMAX POINT DE FUSION 114/264", 15.99, 1, "assets/img/articles/Pokemon/carte/carte1.png", "Carte mew neuve" , 0, 15, 1, 2, 1, 2),
+("CARTE DRAGON POUSSIERE D'ETOILE COLLECTOR RARE", 29.99, 1, "assets/img/articles/Yu-Gi-Oh/carte/carte1.png", "Carte Dragon Poussière d'Etoile neuve" , 0, 15, 2, 1, 1, 2),
 ("Yu Gi Oh- YGO Gold Pride Photo Finish 9 Pocket Portfolio, Sammelmappe, Doré", 11.99, 5, "assets/img/articles/Yu-Gi-Oh/Accessoires/carnet1.jpg", "Protégez votre collection avec fierté et style avec le nouveau portefeuille Duelliste à 9 poches du JEU DE CARTES À COLLECTIONNER Yu-Gi-Oh! avec les lettres de la Pride d'Or. Le recto du Portefeuille est décoré des badges des meilleurs concurrents participant à la Golden Pride de cette année, tandis que le revers montre des illustrations d'une prochaine lettre du sujet! Il est très contrarié, mais qui sortira vainqueur à la fin? Ne manquez pas les cartes de la «Golden Fierté» dans Cyberstorm Access, qui sera mis en vente en mai. Conçu avec un design sécurisé à chargement latéral, ce portefeuille de 10 pages dispose de 9 poches par page - en plaçant les cartes de l'avant vers l'arrière, vous pouvez ranger jusqu'à 180 de vos cartes les plus précieuses. Le portefeuille Duelliste à 9 poches utilise également une fonction antidérapante pour garder les cartes en sécurité et votre collection à tout moment." , 
 0, 15, 2, 1, 1, 7),
 
