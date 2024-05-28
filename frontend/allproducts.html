@@ -48,6 +48,7 @@
                 <h2 class="tri_titre">FILTRER PAR</h2>*
                 <div class="tri">
                     <h3 class="sub_title_tri">Catégories</h3>
+                    <h4>Pokémon</h4>
                     <div class="tri_button">
                         <div class="tri_sub_ctn" id="filter-booster-pokemon">
                             <span class="checkbox"></span>
@@ -61,6 +62,10 @@
                             <span class="checkbox"></span>
                             <span>Coffret Pokémon</span>
                         </div>
+                        <div class="tri_sub_ctn" id="filter-tin-box-pokemon">
+                            <span class="checkbox"></span>
+                            <span>Tin Box Pokémon</span>
+                        </div>
                         <div class="tri_sub_ctn" id="filter-blister-pokemon">
                             <span class="checkbox"></span>
                             <span>Blister Pokémon</span>
@@ -68,6 +73,33 @@
                         <div class="tri_sub_ctn" id="filter-accessoires-pokemon">
                             <span class="checkbox"></span>
                             <span>Accessoires Pokémon</span>
+                        </div>
+                    </div>
+                    <h4>Yu-Gi-Oh!</h4>
+                    <div class="tri_button">
+                        <div class="tri_sub_ctn" id="filter-booster-ygo">
+                            <span class="checkbox"></span>
+                            <span>Booster Yu-Gi-Oh</span>
+                        </div>
+                        <div class="tri_sub_ctn" id="filter-carte-ygo">
+                            <span class="checkbox"></span>
+                            <span>Carte Yu-Gi-Oh à l'unité</span>
+                        </div>
+                        <div class="tri_sub_ctn" id="filter-coffret-ygo">
+                            <span class="checkbox"></span>
+                            <span>Coffret Yu-Gi-Oh</span>
+                        </div>
+                        <div class="tri_sub_ctn" id="filter-tin-box-ygo">
+                            <span class="checkbox"></span>
+                            <span>Tin Box Yu-Gi-Oh</span>
+                        </div>
+                        <div class="tri_sub_ctn" id="filter-blister-ygo">
+                            <span class="checkbox"></span>
+                            <span>Blister Yu-Gi-Oh</span>
+                        </div>
+                        <div class="tri_sub_ctn" id="filter-accessoires-ygo">
+                            <span class="checkbox"></span>
+                            <span>Accessoires Yu-Gi-Oh</span>
                         </div>
                     </div>
                     <h3 class="sub_title_tri">Langue</h3>
@@ -96,7 +128,7 @@
                     </div>
                     <h3 class="sub_title_tri">Edition</h3>
                     <div class="edition_form">
-                        <form class="edition_size" action="">
+                        <form class="langage_size" action="">
                             <label>
                                 <select id="edition-select">
                                     <option value="" disabled selected hidden>(aucun filtre)</option>
@@ -106,6 +138,9 @@
                                 </select>
                             </label>
                         </form>
+                    </div>
+                    <div class="clear_filter_ctn">
+                        <button id="clear_filter">Enlever les filtres</button>
                     </div>                    
                 </div>
             </div>
