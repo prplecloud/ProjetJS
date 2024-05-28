@@ -96,55 +96,54 @@ document.addEventListener('DOMContentLoaded', function() {
         if (fullDescription.length > 150) {
             const shortDescription = fullDescription.substring(0, 150) + '...';
             descriptionElement.textContent = shortDescription;
-
+    
             const moreSpan = document.createElement('span');
             moreSpan.textContent = ' more';
             moreSpan.style.color = 'blue';
             moreSpan.style.cursor = 'pointer';
             descriptionElement.appendChild(moreSpan);
-
+    
             moreSpan.addEventListener('click', function() {
                 descriptionElement.textContent = fullDescription;
             });
         } else {
             descriptionElement.textContent = fullDescription;
         }
+    
         document.getElementById('product_stock').textContent = `Stock: ${product.stock}`;
-        document.getElementById('product_price').textContent = `Prix: ${product.price} €`;
+        document.getElementById('product_price').textContent = `Prix: ${product.price.toFixed(2)} €`;
         document.getElementById('img_article').src = product.image_url;
         document.getElementById('img_article').alt = product.name;
-
+    
         if (product.langage_name && product.langage_name !== 'N/A') {
             document.getElementById('data1').textContent = product.langage_name;
         } else {
             document.querySelector('.langue').style.display = 'none';
         }
-
+    
         if (product.edition_name && product.edition_name !== 'N/A') {
             document.getElementById('data2').textContent = product.edition_name;
         } else {
             document.querySelector('.edition').style.display = 'none';
         }
-
+    
         if (product.licence_name && product.licence_name !== 'N/A') {
             document.getElementById('data3').textContent = product.licence_name;
         } else {
             document.querySelector('.licence').style.display = 'none';
         }
-
+    
         if (product.state_name && product.state_name !== 'N/A') {
             document.getElementById('data4').textContent = product.state_name;
         } else {
             document.querySelector('.etat').style.display = 'none';
         }
+    
         const caracterDivs = document.querySelectorAll('.caract > div');
-
         let visibleIndex = 0;
-
+    
         for (let i = 0; i < caracterDivs.length; i++) {
-
             if (caracterDivs[i].style.display !== 'none' && window.getComputedStyle(caracterDivs[i]).display !== 'none') {
-              
                 if (visibleIndex % 2 === 0) {
                     caracterDivs[i].classList.add('color1');
                     caracterDivs[i].classList.remove('color2');
@@ -152,10 +151,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     caracterDivs[i].classList.add('color2');
                     caracterDivs[i].classList.remove('color1');
                 }
-                visibleIndex++; 
+                visibleIndex++;
             }
         }
     }
+    
 
     fetch(productUrl)
         .then(response => response.json())

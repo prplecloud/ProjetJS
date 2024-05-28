@@ -1,13 +1,15 @@
 const { query } = require('express');
 const pool = require('../config/database');
+const e = require('express');
 
 exports.getProducts = (req, res) => {
     const query = `
-    SELECT p.*, c.name as category_name, l.name as licence_name, g.name as langage_name
+    SELECT p.*, c.name as category_name, l.name as licence_name, g.name as langage_name, e.name as edition_name
     FROM products p
     JOIN categories c ON p.categories_id = c.categories_id
     JOIN Licence l ON p.licence_id = l.licence_id
     JOIN langage g ON p.langage_id = g.langage_id
+    JOIN edition e ON p.edition_id = e.edition_id
     `;
     pool.query(query, (error, results) => {
       if (error) {
@@ -16,6 +18,8 @@ exports.getProducts = (req, res) => {
       res.json(results);
     });
   };
+
+
 
   exports.getProductsBySearch = (req, res) => {
     const { search } = req.query;
@@ -157,3 +161,28 @@ exports.getCategories = (req, res) => {
     res.json(results);
   });
 }
+
+exports.searchProductsByName = (req, res) => {
+  const { name } = req.params;
+  const searchQuery = `
+    SELECT p.*, 
+           e.name as edition_name, 
+           l.name as licence_name, 
+           s.name as state_name, 
+           g.name as langage_name, 
+           c.name as categories_name
+    FROM products p
+    LEFT JOIN edition e ON p.edition_id = e.edition_id
+    LEFT JOIN licence l ON p.licence_id = l.licence_id
+    LEFT JOIN state s ON p.state_id = s.state_id
+    LEFT JOIN langage g ON p.langage_id = g.langage_id
+    LEFT JOIN categories c ON p.categories_id = c.categories_id
+    WHERE LOWER(p.name) LIKE LOWER(?);
+  `;
+  pool.query(searchQuery, [`%${name}%`], (error, results) => {
+    if (error) {
+      return res.status(500).json({ error: error.message });
+    }
+    res.json(results);
+  });
+};

@@ -12,6 +12,6 @@ router.get('/products/editions/:id', controllers.getProductByEdition);
 router.get('/products/states/:id', controllers.getProductByState);
 router.get('/boosters', controllers.getBoosters);
 router.get('/categories', controllers.getCategories);
-router.get('/recherche', controllers.getProductsBySearch);
+router.get('/products/search/:name', controllers.searchProductsByName);
 
 module.exports = router;

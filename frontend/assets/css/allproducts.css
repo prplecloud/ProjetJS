@@ -243,3 +243,18 @@ h4 {
     font-family: 'Rubik_Light';
     margin: 0;
 }
+
+option {
+    display: block;
+    color: #232323;
+    background: #f6f6f6;
+    padding: .625rem 1.25rem;
+}
+
+optgroup {
+    display: block;
+    color: #232323;
+    background: #f6f6f6;
+    padding: .625rem 1.25rem;
+    font-weight: bold;
+}

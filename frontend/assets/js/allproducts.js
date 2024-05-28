@@ -4,13 +4,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let allProductsData = [];
     let activeFilters = [];
     let selectedLanguage = '';
+    let selectedEdition = '';
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || []; 
 
     function getProducts() {
         fetch(url)
             .then(response => response.json())
             .then(data => {
                 allProductsData = data;
-                displayAllProducts(allProductsData);
+                applyFiltersAndSort(); 
                 console.log(data);
             })
             .catch(error => {
@@ -18,32 +20,32 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
-    // Event listener for sorting
-    document.getElementById('sort-select').addEventListener('change', (event) => {
-        const sortDirection = event.target.value;
-        applyFiltersAndSort(sortDirection);
+    document.getElementById('sort-select').addEventListener('change', () => {
+        applyFiltersAndSort();
     });
 
-    // Event listeners for filters
     document.querySelectorAll('.tri_sub_ctn').forEach(filterDiv => {
         filterDiv.addEventListener('click', (event) => {
             const filterId = event.currentTarget.id;
             toggleFilter(filterId);
-            applyFiltersAndSort(document.getElementById('sort-select').value);
+            applyFiltersAndSort();
             updateCheckbox(filterDiv);
         });
     });
 
-    // Event listener for language select
     document.getElementById('language-select').addEventListener('change', (event) => {
         selectedLanguage = event.target.value;
-        applyFiltersAndSort(document.getElementById('sort-select').value);
+        applyFiltersAndSort();
     });
 
-    // Event listener for clear filters button
+    document.getElementById('edition-select').addEventListener('change', (event) => {
+        selectedEdition = event.target.value;
+        applyFiltersAndSort();
+    });
+
     document.getElementById('clear_filter').addEventListener('click', () => {
         clearFilters();
-        applyFiltersAndSort(document.getElementById('sort-select').value);
+        applyFiltersAndSort();
     });
 
     function toggleFilter(filterId) {
@@ -60,9 +62,9 @@ document.addEventListener('DOMContentLoaded', () => {
         filterDiv.setAttribute('data-selected', !isSelected);
     }
 
-    function applyFiltersAndSort(sortDirection) {
-        let filteredProducts = filterProducts(allProductsData, activeFilters, selectedLanguage);
-        filteredProducts = sortProducts(filteredProducts, sortDirection);
+    function applyFiltersAndSort() {
+        let filteredProducts = filterProducts(allProductsData, activeFilters, selectedLanguage, selectedEdition);
+        filteredProducts = sortProducts(filteredProducts, document.getElementById('sort-select').value);
         displayAllProducts(filteredProducts);
     }
 
@@ -75,13 +77,14 @@ document.addEventListener('DOMContentLoaded', () => {
         return products;
     }
 
-    function filterProducts(products, filters, language) {
+    function filterProducts(products, filters, language, editions) {
         return products.filter(product => {
             const category = product.category_name;
             const licence = product.licence_name;
             const lang = product.langage_name;
+            const edition = product.edition_name;
 
-            let matches = filters.length === 0; // If no filters, match all products by default
+            let matches = filters.length === 0;
             if (filters.includes('filter-booster-pokemon')) {
                 matches = matches || (category === 'Booster' && licence === 'Pokémon');
             }
@@ -124,9 +127,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (filters.includes('filter-accessoires-ygo')) {
                 matches = matches || (category === 'Accessoires' && licence === 'Yu-Gi-Oh!');
             }
-            
+
             if (language) {
                 matches = matches && (lang === language);
+            }
+
+            if (editions) {
+                matches = matches && (edition === editions);
             }
 
             return matches;
@@ -142,6 +149,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         document.getElementById('language-select').value = '';
+        document.getElementById('edition-select').value = '';
+    }
+
+    function toggleFavorite(productId) {
+        const index = favorites.indexOf(productId);
+        if (index > -1) {
+            favorites.splice(index, 1);
+        } else {
+            favorites.push(productId);
+        }
+        localStorage.setItem('storedProducts', JSON.stringify(favorites));
+    }
+
+    function isFavorite(productId) {
+        return favorites.includes(productId);
     }
 
     function displayAllProducts(products) {
@@ -154,9 +176,13 @@ document.addEventListener('DOMContentLoaded', () => {
         products.forEach(product => {
             const productElement = document.createElement('div');
             productElement.classList.add('article');
+            productElement.setAttribute('data-product-id', product.products_id);
+
+            const isFav = isFavorite(product.products_id) ? 'filled-heart' : 'empty-heart';
+
             productElement.innerHTML = `
                 <div class="coeur_ctn">
-                    <img class="coeur empty-heart" src="assets/img/heart/empty-heart.png" alt="coeur vide">
+                    <img class="coeur ${isFav}" src="assets/img/heart/${isFav}.png" alt="coeur vide" data-id="${product.products_id}">
                 </div>
                 <p class="licence">${product.licence_name}</p>
                 <p class="cat">${product.category_name}</p>
@@ -164,12 +190,37 @@ document.addEventListener('DOMContentLoaded', () => {
                     <img class="article_img" src="${product.image_url}" alt="${product.name}">
                 </a>
                 <h2 class="product_name">${product.name}</h2>
-                <p class="prix">Prix: ${product.price}<span>€</span></p>
+                <p class="prix">Prix: ${product.price.toFixed(2)}<span>€</span></p>
             `;
+
             allProductsContainer.appendChild(productElement);
         });
 
         productsList.appendChild(allProductsContainer);
+
+        document.querySelectorAll('.coeur').forEach(heart => {
+            heart.addEventListener('click', (event) => {
+                const productId = event.target.getAttribute('data-id');
+                toggleFavorite(productId);
+                event.target.classList.toggle('filled-heart');
+                event.target.classList.toggle('empty-heart');
+                event.target.src = `assets/img/heart/${event.target.classList.contains('filled-heart') ? 'filled-heart' : 'empty-heart'}.png`;
+            });
+        });
+
+        updateFavoritedProductsDisplay();
+    }
+
+    function updateFavoritedProductsDisplay() {
+        const storedProducts = JSON.parse(localStorage.getItem('storedProducts')) || [];
+        document.querySelectorAll('.coeur').forEach(heart => {
+            const productId = heart.getAttribute('data-id');
+            if (storedProducts.includes(productId)) {
+                heart.src = 'assets/img/heart/filled-heart.png';
+                heart.classList.add('filled-heart');
+                heart.classList.remove('empty-heart');
+            }
+        });
     }
 
     getProducts();

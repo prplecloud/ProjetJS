@@ -15,12 +15,11 @@
             <img id="logo" src="assets/img/LogoSite.png" alt="">
         </a>
         <ul>
-            <li><a class="nav" href="categorie.html?categories=2">Carte à l'unité</a></li>
-            <li><a class="nav" href="categorie.html?categories=1">Booster</a></li>
-            <li><a class="nav" href="categorie.html?categories=7">Accessoires</a></li>
+            <li><a class="nav" href="allproducts.html">Tout nos produits</a></li>
+            <li><a class="nav" href="promotions.html">Promotions</a></li>
         </ul>
-        <form action="/recherche" method="GET" class="search">
-            <input type="text" id="recherche" name="query" placeholder="Rechercher" required class="search_bar">
+        <form action="recherche.html" method="GET" class="search">
+            <input type="text" id="recherche" name="name" placeholder="Rechercher" required class="search_bar">
         </form>
         <svg class="svg-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -91,7 +90,7 @@
                         </div>
                         <div class="tri_sub_ctn" id="filter-tin-box-ygo">
                             <span class="checkbox"></span>
-                            <span>Tin Box Yu-Gi-Oh</span>
+                            <span>Tin-Box Yu-Gi-Oh</span>
                         </div>
                         <div class="tri_sub_ctn" id="filter-blister-ygo">
                             <span class="checkbox"></span>
@@ -132,9 +131,24 @@
                             <label>
                                 <select id="edition-select">
                                     <option value="" disabled selected hidden>(aucun filtre)</option>
-                                    <option value="Français">Français</option>
-                                    <option value="Anglais">Anglais</option>
-                                    <option value="Allemand">Allemand</option>
+                                    <optgroup label="Yu-Gi-Oh">
+                                    <option value="Les Vaillants Fracasseurs">Les Vaillants Fracasseurs</option>
+                                    <option value="L'Ère du Seigneur Suprême">L'Ère du Seigneur Suprême</option>
+                                    <option value="Cauchemar Fantome">Cauchemar Fantome</option>
+                                    <option value="Duelliste légendaire">Duelliste légendaire</option>
+                                    <option value="Incroyables Défenseurs">Incroyables Défenseurs</option>
+                                    <option value="Nexus du duelliste">Nexus du duelliste</option>
+                                    <option value="Le labyrinthe du millénaire">Le labyrinthe du millénaire</option>
+                                </optgroup>
+                                    <optgroup label="Pokémon">
+                                    <option value="Forces Temporelles">Forces Temporelles</option>
+                                    <option value="Destinée de Paldéa">Destinée de Paldéa</option>
+                                    <option value="Ecarlate et Violet">Ecarlate et Violet</option>
+                                    <option value="Faille Paradoxe">Faille Paradoxe</option>
+                                    <option value="Stars Etincelantes">Stars Etincelantes</option>
+                                    <option value="Tempête Argentée">Tempête Argentée</option>
+                                    <option value="Mascarade Crépusculaire">Mascarade Crépusculaire</option>
+                                </optgroup>
                                 </select>
                             </label>
                         </form>
@@ -184,6 +198,8 @@
         </div>
     </footer>
     <script src="assets/js/allproducts.js"></script>
+    <script src="assets/js/recherche.js"></script>
+
 </body>
 
 </html>

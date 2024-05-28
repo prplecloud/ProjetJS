@@ -15,12 +15,11 @@
             <img id="logo" src="assets/img/LogoSite.png" alt="">
         </a>
         <ul>
-            <li><a class="nav" href="categorie.html?categories=2">Carte à l'unité</a></li>
-            <li><a class="nav" href="categorie.html?categories=1">Booster</a></li>
-            <li><a class="nav" href="categorie.html?categories=7">Accessoires</a></li>
+            <li><a class="nav" href="allproducts.html">Tout nos produits</a></li>
+            <li><a class="nav" href="promotions.html">Promotions</a></li>
         </ul>
-        <form action="/recherche" method="GET" class="search">
-            <input type="text" id="recherche" name="query" placeholder="Rechercher" required class="search_bar">
+        <form action="recherche.html" method="GET" class="search">
+            <input type="text" id="recherche" name="name" placeholder="Rechercher" required class="search_bar">
         </form>
         <svg class="svg-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -37,8 +36,8 @@
     <main>
         <div class="choice">
             <div class="choice_button">
-                <a href="licence.html?licence=1" class="category-link" data-licence="Pokemon"><img class="cat_img" src="assets/img/LogoPkm.png" alt=""></a>
-                <a href="licence.html?licence=2" class="category-link" data-licence="Yu-Gi-Oh"><img class="cat_img" src="assets/img/LogoYGO.png" alt=""></a>
+                <a href="licence.html?licence=1" id="pokemon_btn" class="category-link" data-licence="Pokemon"><img class="cat_img" src="assets/img/LogoPkm.png" alt=""></a>
+                <a href="licence.html?licence=2" id="ygo_btn" class="category-link" data-licence="Yu-Gi-Oh"><img class="cat_img" src="assets/img/LogoYGO.png" alt=""></a>
             </div>
         </div>
         <div class="main_ctn">
@@ -64,6 +63,6 @@
         </div>
     </footer>
     <script src="assets/js/index.js"></script>
+    <script src="assets/js/recherche.js"></script>
 </body>
-
 </html>

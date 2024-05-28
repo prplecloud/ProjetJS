@@ -4,9 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function displayFavoriteProducts() {
     const favorisList = document.querySelector('.articles');
-    favorisList.innerHTML = ''; // Nettoyer la liste avant d'afficher les favoris
+    favorisList.innerHTML = ''; 
 
-    // Récupérer les identifiants des produits favoris depuis le stockage local
     const storedProducts = JSON.parse(localStorage.getItem('storedProducts')) || [];
 
     if (storedProducts.length === 0) {
@@ -14,7 +13,6 @@ function displayFavoriteProducts() {
         return;
     }
 
-    // Faire une requête pour obtenir les détails des produits favoris depuis votre API
     storedProducts.forEach(productId => {
         fetch(`http://localhost:3000/api/products/${productId}`)
             .then(response => response.json())
@@ -22,15 +20,11 @@ function displayFavoriteProducts() {
                 const productElement = createProductElement(product);
                 favorisList.appendChild(productElement);
 
-                // Ajouter l'événement de suppression du produit favori
                 const poubelle = productElement.querySelector('.poubelle');
                 poubelle.addEventListener('click', function(event) {
                     event.preventDefault();
-                    // Récupérer l'identifiant du produit
                     const productId = this.closest('.article').getAttribute('data-product-id');
-                    // Retirer l'identifiant du produit du stockage local
                     removeProductFromLocalStorage(productId);
-                    // Retirer l'élément de la liste des favoris
                     favorisList.removeChild(this.closest('.article'));
                 });
             })
@@ -41,13 +35,10 @@ function displayFavoriteProducts() {
 }
 
 function removeProductFromLocalStorage(productId) {
-    // Récupérer les produits stockés dans le local storage
     let storedProducts = JSON.parse(localStorage.getItem('storedProducts')) || [];
 
-    // Filtrer les produits pour retirer celui avec l'ID spécifié
     storedProducts = storedProducts.filter(id => id !== productId);
 
-    // Mettre à jour le stockage local avec la nouvelle liste de produits
     localStorage.setItem('storedProducts', JSON.stringify(storedProducts));
 }
 
@@ -65,7 +56,7 @@ function createProductElement(product) {
         <img class="article_img" src="${product.image_url}" alt="${product.name}">
     </a>
     <h2 class="product_name">${product.name}</h2>
-    <p class="prix">Prix: ${product.price}<span>€</span></p>
+    <p class="prix">Prix: ${product.price.toFixed(2)}<span>€</span></p>
 `;
     return productElement;
 }

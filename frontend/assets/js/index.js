@@ -58,7 +58,7 @@ function displayProductsByLicence(products) {
                     <img class="article_img" src="${product.image_url}" alt="${product.name}">
                 </a>
                 <h2 class="product_name">${product.name}</h2>
-                <p class="prix">Prix: ${product.price}<span>€</span></p>
+                <p class="prix">Prix: ${product.price.toFixed(2)}<span>€</span></p>
             `;
             categoryContainer.appendChild(productElement);
         });
@@ -66,55 +66,39 @@ function displayProductsByLicence(products) {
         productsList.appendChild(categoryContainer);
     });
 
-    // Ajout de la gestion des clics sur l'image du cœur vide
     document.querySelectorAll('.empty-heart').forEach(emptyHeart => {
         emptyHeart.addEventListener('click', function(event) {
             event.preventDefault();
-            // Vérifier si l'image est vide ou pleine
             const isHeartEmpty = this.src.includes('empty-heart');
-            // Basculer entre le cœur vide et le cœur plein
             if (isHeartEmpty) {
                 this.src = 'assets/img/heart/filled-heart.png';
-                // Récupérer l'identifiant du produit
                 const productId = this.closest('.article').getAttribute('data-product-id');
-                // Stocker l'identifiant du produit dans le stockage local
                 storeProductInLocalStorage(productId);
             } else {
                 this.src = 'assets/img/heart/empty-heart.png';
-                // Récupérer l'identifiant du produit
                 const productId = this.closest('.article').getAttribute('data-product-id');
-                // Retirer l'identifiant du produit du stockage local
                 removeProductFromLocalStorage(productId);
             }
         });
     });
 
-    // Mettre à jour l'affichage en fonction des produits déjà favorisés
     updateFavoritedProductsDisplay();
 }
 
 function storeProductInLocalStorage(productId) {
-    // Récupérer les produits stockés précédemment (s'ils existent)
     let storedProducts = JSON.parse(localStorage.getItem('storedProducts')) || [];
-    // Ajouter le nouvel ID de produit à la liste
     storedProducts.push(productId);
-    // Mettre à jour le stockage local avec la nouvelle liste
     localStorage.setItem('storedProducts', JSON.stringify(storedProducts));
 }
 
 function removeProductFromLocalStorage(productId) {
-    // Récupérer les produits stockés
     let storedProducts = JSON.parse(localStorage.getItem('storedProducts')) || [];
-    // Retirer l'identifiant du produit de la liste
     storedProducts = storedProducts.filter(id => id !== productId);
-    // Mettre à jour le stockage local avec la nouvelle liste
     localStorage.setItem('storedProducts', JSON.stringify(storedProducts));
 }
 
 function updateFavoritedProductsDisplay() {
-    // Récupérer les produits favorisés stockés dans le local storage
     const storedProducts = JSON.parse(localStorage.getItem('storedProducts')) || [];
-    // Parcourir tous les produits et remplir le cœur s'ils sont favorisés
     document.querySelectorAll('.empty-heart').forEach(emptyHeart => {
         const productId = emptyHeart.closest('.article').getAttribute('data-product-id');
         if (storedProducts.includes(productId)) {
