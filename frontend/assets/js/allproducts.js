@@ -3,6 +3,7 @@ const url = 'http://localhost:3000/api/products';
 document.addEventListener('DOMContentLoaded', () => {
     let allProductsData = [];
     let activeFilters = [];
+    let selectedLanguage = '';
 
     function getProducts() {
         fetch(url)
@@ -10,17 +11,20 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 allProductsData = data;
                 displayAllProducts(allProductsData);
+                console.log(data)
             })
             .catch(error => {
                 console.error("Erreur lors de la récupération des produits :", error);
             });
     }
 
+    // Event listener for sorting
     document.getElementById('sort-select').addEventListener('change', (event) => {
         const sortDirection = event.target.value;
         applyFiltersAndSort(sortDirection);
     });
 
+    // Event listeners for filters
     document.querySelectorAll('.tri_sub_ctn').forEach(filterDiv => {
         filterDiv.addEventListener('click', (event) => {
             const filterId = event.currentTarget.id;
@@ -28,6 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
             applyFiltersAndSort(document.getElementById('sort-select').value);
             updateCheckbox(filterDiv);
         });
+    });
+
+    // Event listener for language select
+    document.getElementById('language-select').addEventListener('change', (event) => {
+        selectedLanguage = event.target.value;
+        applyFiltersAndSort(document.getElementById('sort-select').value);
     });
 
     function toggleFilter(filterId) {
@@ -45,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function applyFiltersAndSort(sortDirection) {
-        let filteredProducts = filterProducts(allProductsData, activeFilters);
+        let filteredProducts = filterProducts(allProductsData, activeFilters, selectedLanguage);
         filteredProducts = sortProducts(filteredProducts, sortDirection);
         displayAllProducts(filteredProducts);
     }
@@ -59,14 +69,13 @@ document.addEventListener('DOMContentLoaded', () => {
         return products;
     }
 
-    function filterProducts(products, filters) {
+    function filterProducts(products, filters, language) {
         return products.filter(product => {
             const category = product.category_name;
             const licence = product.licence_name;
+            const lang = product.langage_name;
 
-            if (filters.length === 0) return true;
-
-            let matches = false;
+            let matches = filters.length === 0;
             if (filters.includes('filter-booster-pokemon')) {
                 matches = matches || (category === 'Booster' && licence === 'Pokémon');
             }
@@ -76,6 +85,23 @@ document.addEventListener('DOMContentLoaded', () => {
             if (filters.includes('filter-coffret-pokemon')) {
                 matches = matches || (category === 'Coffret' && licence === 'Pokémon');
             }
+            if (filters.includes('filter-pokemon')) {
+                matches = matches || (licence === 'Pokémon');
+            }
+            if (filters.includes('filter-ygo')) {
+                matches = matches || (licence === 'Yu-Gi-Oh!');
+            }
+            
+            if (language) {
+                matches = matches && (lang === language);
+            }
+
+            console.log(`Product: ${product.name}`);
+            console.log(`Category: ${category}`);
+            console.log(`Licence: ${licence}`);
+            console.log(`Language: ${lang}`);
+            console.log(`Filters: ${filters}`);
+            console.log(`Matches: ${matches}`);
 
             return matches;
         });

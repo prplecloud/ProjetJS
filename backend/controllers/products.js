@@ -3,10 +3,11 @@ const pool = require('../config/database');
 
 exports.getProducts = (req, res) => {
     const query = `
-    SELECT p.*, c.name as category_name, l.name as licence_name
+    SELECT p.*, c.name as category_name, l.name as licence_name, g.name as langage_name
     FROM products p
     JOIN categories c ON p.categories_id = c.categories_id
     JOIN Licence l ON p.licence_id = l.licence_id
+    JOIN langage g ON p.langage_id = g.langage_id
     `;
     pool.query(query, (error, results) => {
       if (error) {
