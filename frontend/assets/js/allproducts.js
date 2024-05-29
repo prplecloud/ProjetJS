@@ -143,6 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function clearFilters() {
         activeFilters = [];
         selectedLanguage = '';
+        selectedEdition = '';
 
         document.querySelectorAll('.tri_sub_ctn').forEach(filterDiv => {
             filterDiv.setAttribute('data-selected', 'false');

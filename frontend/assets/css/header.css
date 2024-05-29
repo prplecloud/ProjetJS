@@ -11,8 +11,12 @@ body {
     font-family: 'Rubik_Black', sans-serif;
     background-image: url(../img/before_slider.svg);
     background-repeat: no-repeat;
-    background-position-y: 15%;
+    background-size: contain;
+    background-position-y: 200px;
+    background-position-x: center;
     color: #4D0000;
+    background-color: rgba(254, 249, 241, 233);
+
 }
 
 header {
@@ -20,9 +24,9 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  background-color: white;
   padding: 15px 0px;
   color: #4D0000;
+
 }
 
 ul {

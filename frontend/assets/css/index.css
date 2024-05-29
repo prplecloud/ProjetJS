@@ -23,6 +23,10 @@ main {
     align-items: center;
     justify-content: center;
     margin-top: 15px;
+    background-image: url(../img/before_slider.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+
 }
 
 .choice_button {

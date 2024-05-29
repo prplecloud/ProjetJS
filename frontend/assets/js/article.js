@@ -154,13 +154,39 @@ document.addEventListener('DOMContentLoaded', function() {
                 visibleIndex++;
             }
         }
+
+        document.querySelector('.item_button').addEventListener('click', function() {
+            addToCart(product);
+        });
     }
     
-
     fetch(productUrl)
         .then(response => response.json())
         .then(data => displayProductDetails(data))
         .catch(error => {
             console.error("Erreur lors de la récupération des détails du produit :", error);
         });
+
+    function addToCart(product) {
+        const quantity = parseInt(quantityInput.value);
+        let cart = JSON.parse(localStorage.getItem('panier')) || [];
+        
+        const existingProduct = cart.find(item => item.id === productId);
+        if (existingProduct) {
+            // Si le produit existe déjà dans le panier, mettre à jour la quantité
+            existingProduct.quantity += quantity;
+        } else {
+            // Sinon, ajouter le produit au panier avec sa quantité
+            cart.push({
+                id: productId,
+                name: product.name,
+                price: product.price,
+                image: product.image_url,
+                quantity: quantity
+            });
+        }
+
+        localStorage.setItem('panier', JSON.stringify(cart));
+        alert('Produit ajouté au panier');
+    }
 });
