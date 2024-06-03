@@ -111,7 +111,20 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     
         document.getElementById('product_stock').textContent = `Stock: ${product.stock}`;
-        document.getElementById('product_price').textContent = `Prix: ${product.price.toFixed(2)} €`;
+ 
+        let price = product.price;
+        let priceWithReduction = product.price;
+        let priceClass = 'prix-initial'; 
+        if (product.réduction !== 0) {
+            priceWithReduction = product.price - (product.price * (product.réduction / 100));
+            priceClass = 'prix-initial-promo'; 
+        }
+    
+        document.getElementById('product_price').innerHTML = `
+        Prix:  ${product.réduction !== 0 ? `<span class="prix-réduit">${priceWithReduction.toFixed(2)} €</span>` : ''}
+            <span class="${priceClass}">${price.toFixed(2)} €</span>
+            
+        `;
         document.getElementById('img_article').src = product.image_url;
         document.getElementById('img_article').alt = product.name;
     

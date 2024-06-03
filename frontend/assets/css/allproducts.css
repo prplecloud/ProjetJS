@@ -235,8 +235,8 @@ select {
 }
 
 .tri_sub_ctn[data-selected="true"] .checkbox::after {
-    content: '✕'; /* Unicode for cross */
-    color: red; /* Optional: color for the cross */
+    content: '✕';
+    color: red;
 }
 
 h4 {
@@ -257,4 +257,18 @@ optgroup {
     background: #f6f6f6;
     padding: .625rem 1.25rem;
     font-weight: bold;
+}
+
+.prix-initial {
+    text-decoration: none;
+    color: #4D0000;
+    font-weight: normal;
+}
+
+
+.prix-initial-promo {
+    text-decoration: line-through;
+    color: #999;
+    font-weight: normal;
+    font-size: 0.5em; 
 }

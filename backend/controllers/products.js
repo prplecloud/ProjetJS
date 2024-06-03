@@ -4,7 +4,7 @@ const e = require('express');
 
 exports.getProducts = (req, res) => {
     const query = `
-    SELECT p.*, c.name as category_name, l.name as licence_name, g.name as langage_name, e.name as edition_name
+    SELECT p.*, c.name as category_name, l.name as licence_name, g.name as langage_name, e.name as edition_name, réduction
     FROM products p
     JOIN categories c ON p.categories_id = c.categories_id
     JOIN Licence l ON p.licence_id = l.licence_id
@@ -18,23 +18,6 @@ exports.getProducts = (req, res) => {
       res.json(results);
     });
   };
-
-
-
-  exports.getProductsBySearch = (req, res) => {
-    const { search } = req.query;
-    const query = `SELECT p.*, c.name as category_name, l.name as licence_name
-                   FROM products p
-                   JOIN categories c ON p.categories_id = c.categories_id
-                   JOIN Licence l ON p.licence_id = l.licence_id
-                   WHERE p.name LIKE ?`;
-    pool.query(query, [`%${search}%`], (error, results) => {
-        if (error) {
-            return res.status(500).json({ error: error.message });
-        }
-        res.json(results);
-    });
-};
 
 
 exports.getProductById = (req, res) => {
@@ -186,3 +169,12 @@ exports.searchProductsByName = (req, res) => {
     res.json(results);
   });
 };
+
+exports.getProductsByPromo = (req, res) => {
+  pool.query('SELECT * FROM products WHERE réduction IS NOT NULL', (error, results) => {
+    if (error) {
+      return res.status(500).json({ error: error.message });
+    }
+    res.json(results);
+  });
+}

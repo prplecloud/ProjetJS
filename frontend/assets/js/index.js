@@ -48,6 +48,15 @@ function displayProductsByLicence(products) {
             const productElement = document.createElement('div');
             productElement.classList.add('article');
             productElement.setAttribute('data-product-id', product.products_id);
+        
+            let price = product.price;
+            let priceWithReduction = product.price;
+            let priceClass = 'prix-initial'; // Par défaut, la classe CSS est pour les prix initiaux sans promotion
+            if (product.réduction !== 0) {
+                priceWithReduction = product.price - (product.price * (product.réduction / 100));
+                priceClass = 'prix-initial-promo'; // Si le produit a une promotion, utiliser la classe CSS pour les prix initiaux avec promotion
+            }
+        
             productElement.innerHTML = `
             <div class="coeur_ctn">
                 <img class="coeur empty-heart" src="assets/img/heart/empty-heart.png" alt="coeur vide">
@@ -58,10 +67,14 @@ function displayProductsByLicence(products) {
                     <img class="article_img" src="${product.image_url}" alt="${product.name}">
                 </a>
                 <h2 class="product_name">${product.name}</h2>
-                <p class="prix">Prix: ${product.price.toFixed(2)}<span>€</span></p>
+                <p class="prix">
+                    <span class="${priceClass}">${price.toFixed(2)}<span>€</span></span>
+                    ${product.réduction !== 0 ? `<span class="prix-réduit">${priceWithReduction.toFixed(2)}<span>€</span></span>` : ''}
+                </p>
             `;
             categoryContainer.appendChild(productElement);
         });
+        
 
         productsList.appendChild(categoryContainer);
     });
@@ -84,6 +97,7 @@ function displayProductsByLicence(products) {
 
     updateFavoritedProductsDisplay();
 }
+
 
 function storeProductInLocalStorage(productId) {
     let storedProducts = JSON.parse(localStorage.getItem('storedProducts')) || [];

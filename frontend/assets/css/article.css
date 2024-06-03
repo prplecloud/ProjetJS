@@ -160,7 +160,6 @@ input[type="number"]::-webkit-outer-spin-button {
     width: 60%;
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
 }
 
@@ -288,4 +287,18 @@ input[type="number"]::-webkit-outer-spin-button {
 .color2 {
     background-color: #f9b142;
     padding: 10px;
+}
+
+.prix-initial {
+    text-decoration: none;
+    color: #4D0000;
+    font-weight: normal;
+}
+
+
+.prix-initial-promo {
+    text-decoration: line-through;
+    color: #999;
+    font-weight: normal;
+    font-size: 0.5em; 
 }

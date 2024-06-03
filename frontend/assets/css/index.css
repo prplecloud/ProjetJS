@@ -168,3 +168,18 @@ h4 {
     width: 10%;
     cursor: pointer;
 }
+
+
+.prix-initial {
+    text-decoration: none;
+    color: #4D0000;
+    font-weight: normal;
+}
+
+
+.prix-initial-promo {
+    text-decoration: line-through;
+    color: #999;
+    font-weight: normal;
+    font-size: 0.5em; 
+}
