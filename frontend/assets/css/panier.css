@@ -186,3 +186,49 @@ h2 {
 .trash {
     width: 5%;
 }
+
+@media screen and (max-width: 600px) {
+    .container_all {
+        flex-direction: column;
+    }
+    .main_ctn {
+        width: 90%;
+        padding: 10px;
+    }
+
+    .article_all {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .name_article {
+        font-size: 0.75em;
+    }
+
+    .name_desc {
+        font-size: 0.75em;
+        width: 30%;
+    }
+
+    .prix_desc {
+        font-size: 0.75em;
+    }
+
+    p {
+        font-size: 0.75em;
+    }
+
+    .article_line {
+        width: 100%;
+        padding: 0;
+    }
+
+    .prix_all {
+        width: 90%;
+    }
+
+    #quantity {
+        font-size: 0.35em;
+    }
+
+}

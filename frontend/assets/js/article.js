@@ -186,10 +186,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const existingProduct = cart.find(item => item.id === productId);
         if (existingProduct) {
-            // Si le produit existe déjà dans le panier, mettre à jour la quantité
             existingProduct.quantity += quantity;
         } else {
-            // Sinon, ajouter le produit au panier avec sa quantité
             cart.push({
                 id: productId,
                 name: product.name,

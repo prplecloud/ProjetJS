@@ -138,7 +138,7 @@ h4 {
 }
 
 .prix {
-    font-size: 2em;
+    font-size: 1.5em;
     margin-top: 0;
 }
 
@@ -165,15 +165,7 @@ h4 {
     width: 100%;
 }
 
-.coeur {
-    width: 10%;
-    cursor: pointer;
-}
 
-.coeur_header {
-    width: 10%;
-    cursor: pointer;
-}
 
 
 .prix-initial {
@@ -190,103 +182,10 @@ h4 {
     font-size: 0.5em; 
 }
 
-
-.menu-btn {
-    display: none; /* Masquer le bouton burger par défaut */
-}
-
-@media screen and (max-width: 600px) { /* Ciblez les écrans dont la largeur est inférieure à 600px */
-
-    footer {
-        display: none;
-    }
-
-    .search {
-        display: none;
-    }
-
-    .a_header {
-        display: none;
-    }
-
-    .coeur_header {
-        display: none;
-    }
-
-    .ul_header {
-        display: none;
-    }
-
-
-    .menu-btn {
-        display: block;
-        position: fixed;
-        top: 35px;
-        right: 20px;
-        z-index: 999;
-    }
-    
-    .menu-btn-burger {
-        width: 30px;
-        height: 4px;
-        background-color: #000;
-        transition: all 0.3s ease;
-    }
-
-    .menu-btn-burger::before,
-    .menu-btn-burger::after {
-        content: '';
-        display: block;
-        width: 100%;
-        height: 4px;
-        background-color: #000;
-        transition: all 0.3s ease;
-    }
-
-    .menu-btn-burger::before {
-        transform: translateY(-8px);
-    }
-
-    .menu-btn-burger::after {
-        transform: translateY(4px);
-    }
-
-    .menu-btn.active .menu-btn-burger {
-        transform: translateY(6px) rotate(45deg);
-        background-color: transparent;
-    }
-
-    .menu-btn.active .menu-btn-burger::before {
-        transform: translateY(0) rotate(45deg);
-    }
-
-    .menu-btn.active .menu-btn-burger::after {
-        transform: translateY(-4px) rotate(-45deg);
-    }
-
-    .menu {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        background-color: white;
-        padding: 10px 0;
-    }
-
-    .menu.active {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 50%;
-    }
-
-    .ul_menu_bgr {
-        display: flex;
-        flex-direction: column;
-        align-items: end;
-        justify-content: center;
-        width: 100%;
+@media screen and (max-width: 600px) {
+    .prix {
+        font-size: 1em;
     }
 }
+
+

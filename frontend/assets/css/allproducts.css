@@ -272,3 +272,44 @@ optgroup {
     font-weight: normal;
     font-size: 0.5em; 
 }
+
+@media screen and (max-width: 600px) {
+
+    .tri_main_ctn {
+    display: none;   
+ }
+
+    .tri_titre {
+        font-size: 1em;
+    }
+
+    .sub_title_tri {
+        font-size: 0.75em;
+    }
+    .tri_button {
+        font-size: 0.75em;
+    }
+    .tri_prix {
+        width: 100%;
+    }
+
+    .trier_title {
+        width: 100%;
+    }
+
+    #sort-select {
+        width: 100%;
+    }
+
+    .category_ctn {
+        width: 100%;
+    }
+
+    .main_ctn {
+        width: 90%;
+        padding: 0;
+    }
+    .prix {
+        font-size: 0.75em;
+    }
+}

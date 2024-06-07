@@ -125,7 +125,7 @@ h4 {
 }
 
 .prix {
-    font-size: 2em;
+    font-size: 0.75em;
     margin-top: 0;
 }
 
@@ -156,3 +156,9 @@ h4 {
     cursor: pointer;
 }
 
+@media screen and (max-width: 600px) {
+
+    .main_ctn {
+     padding: 10px;
+    }
+}

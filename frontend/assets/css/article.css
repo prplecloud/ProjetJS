@@ -302,3 +302,53 @@ input[type="number"]::-webkit-outer-spin-button {
     font-weight: normal;
     font-size: 0.5em; 
 }
+
+@media screen and (max-width: 600px) {
+
+    #product_name {
+        font-size: 1em;
+    }
+
+    #product_description {
+        font-size: 0.75em;
+    }
+
+    #product_price {
+        font-size: 2em;
+    }
+
+    .qtn_txt {
+        font-size: 0.75em;
+    }
+
+    .main_ctn {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 70%;
+    }
+
+    .article_desc {
+        width: 100%;
+        gap: 10px;
+    }
+
+    .caract>* {
+        display: flex;
+        font-size: 0.75em;
+        font-family: 'Rubik_Light';
+        justify-content: space-between;
+    }
+
+    #data2 {
+        text-align: end;
+    }
+
+    .qtn_txt {
+        display: flex;
+        align-items: center;
+    }
+    .images_ctn {
+        width: 100%;
+    }
+}

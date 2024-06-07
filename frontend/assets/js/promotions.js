@@ -30,10 +30,10 @@ function displayProductsByLicence(products) {
 
         let price = product.price;
         let priceWithReduction = product.price;
-        let priceClass = 'prix-initial'; // Par défaut, la classe CSS est pour les prix initiaux sans promotion
+        let priceClass = 'prix-initial';
         if (product.réduction !== 0) {
             priceWithReduction = product.price - (product.price * (product.réduction / 100));
-            priceClass = 'prix-initial-promo'; // Si le produit a une promotion, utiliser la classe CSS pour les prix initiaux avec promotion
+            priceClass = 'prix-initial-promo';
         }
 
         const isFav = isFavorite(product.products_id) ? 'filled-heart' : 'empty-heart';

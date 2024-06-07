@@ -35,7 +35,7 @@ function displayProducts(products) {
             <img class="article_img" src="${product.image_url}" alt="${product.name}">
             </a>
             <h2 class="product_name">${product.name}</h2>
-            <p class="prix">Prix: ${product.price.toFixed(2)}<span>€</span></p>
+            <p class="prix">${product.price.toFixed(2)}<span>€</span></p>
         `;
         productsList.appendChild(productElement);
     });
