@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
     displayFavoriteProducts();
 });
+const storedProducts = JSON.parse(localStorage.getItem('storedProducts')) || [];
 
 function displayFavoriteProducts() {
     const favorisList = document.querySelector('.articles');
     favorisList.innerHTML = ''; 
 
-    const storedProducts = JSON.parse(localStorage.getItem('storedProducts')) || [];
 
     if (storedProducts.length === 0) {
         favorisList.innerHTML = '<p>Aucun produit favori trouvé.</p>';
@@ -40,7 +40,14 @@ function removeProductFromLocalStorage(productId) {
     storedProducts = storedProducts.filter(id => id !== productId);
 
     localStorage.setItem('storedProducts', JSON.stringify(storedProducts));
+
+    if (storedProducts.length === 0) {
+        favorisList.innerHTML = '<p>Aucun produit favori trouvé.</p>';
+        return;
+    }
+
 }
+
 
 function createProductElement(product) {
     const productElement = document.createElement('div');
@@ -58,5 +65,7 @@ function createProductElement(product) {
     <h2 class="product_name">${product.name}</h2>
     <p class="prix">Prix: ${product.price.toFixed(2)}<span>€</span></p>
 `;
+
     return productElement;
+    
 }

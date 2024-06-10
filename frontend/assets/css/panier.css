@@ -71,6 +71,11 @@ align-items: center;
 
 #article_img {
     width: 70%;
+    transition: 0.3s;}
+
+#article_img:hover {
+    cursor: pointer;
+    transform: scale(1.2);
 }
 
 .img_article {

@@ -178,3 +178,4 @@ exports.getProductsByPromo = (req, res) => {
     res.json(results);
   });
 }
+

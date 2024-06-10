@@ -1,7 +1,10 @@
 const url = 'http://localhost:3000/api/products';
 
+let currentPage = 1;
+const productsPerPage = 9;
+let allProductsData = [];
+
 document.addEventListener('DOMContentLoaded', () => {
-    let allProductsData = [];
     let activeFilters = [];
     let selectedLanguage = '';
     let selectedEdition = '';
@@ -13,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 allProductsData = data;
                 applyFiltersAndSort(); 
+                displayPagination();
                 console.log(data);
             })
             .catch(error => {
@@ -171,25 +175,29 @@ document.addEventListener('DOMContentLoaded', () => {
         const productsList = document.querySelector('.articles');
         productsList.innerHTML = '';
 
+        const startIndex = (currentPage - 1) * productsPerPage;
+    const endIndex = startIndex + productsPerPage;
+    const displayedProducts = products.slice(startIndex, endIndex);
+
         const allProductsContainer = document.createElement('div');
         allProductsContainer.classList.add('category_ctn');
 
-        products.forEach(product => {
+        displayedProducts.forEach(product => {
             const productElement = document.createElement('div');
             productElement.classList.add('article');
             productElement.setAttribute('data-product-id', product.products_id);
             let price = product.price;
             let priceWithReduction = product.price;
-            let priceClass = 'prix-initial'; // Par défaut, la classe CSS est pour les prix initiaux sans promotion
+            let priceClass = 'prix-initial';
             if (product.réduction !== 0) {
                 priceWithReduction = product.price - (product.price * (product.réduction / 100));
-                priceClass = 'prix-initial-promo'; // Si le produit a une promotion, utiliser la classe CSS pour les prix initiaux avec promotion
+                priceClass = 'prix-initial-promo';
             }
             const isFav = isFavorite(product.products_id) ? 'filled-heart' : 'empty-heart';
 
             productElement.innerHTML = `
             <div class="coeur_ctn">
-                <img class="coeur empty-heart" src="assets/img/heart/empty-heart.png" alt="coeur vide">
+               <img class="coeur empty-heart" src="assets/img/heart/empty-heart.png" alt="coeur vide" data-id="${product.products_id}">
             </div>
                 <p class="licence">${product.licence_name}</p>
                 <p class="cat">${product.category_name}</p>
@@ -233,5 +241,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function displayPagination() {
+        const totalPages = Math.ceil(allProductsData.length / productsPerPage);
+        const paginationContainer = document.querySelector('.pagination');
+    
+        paginationContainer.innerHTML = '';
+    
+        for (let i = 1; i <= totalPages; i++) {
+            const pageButton = document.createElement('button');
+            pageButton.textContent = i;
+            pageButton.classList.add('page-button');
+            if (i === currentPage) {
+                pageButton.classList.add('active');
+            }
+            pageButton.addEventListener('click', () => {
+                currentPage = i;
+                applyFiltersAndSort();
+                // Supprimer la classe active de tous les boutons de pagination
+                document.querySelectorAll('.page-button').forEach(button => {
+                    button.classList.remove('active');
+                });
+                // Ajouter la classe active au bouton cliqué
+                pageButton.classList.add('active');
+            });
+            paginationContainer.appendChild(pageButton);
+        }
+    }
+    
+
     getProducts();
+    displayPagination();
+
 });
+

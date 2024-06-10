@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 quantityInput.value = 1;
             }
 
-            const newTotal = article.price * newQuantity;
+            const newTotal = (article.price - (article.price * (article.réduction / 100))) * newQuantity;
 
             prixTotal.textContent = newTotal.toFixed(2) + '€';
 
@@ -47,7 +47,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         let totalPrice = 0;
         panierData.forEach(article => {
-            totalPrice += article.price * article.quantity;
+            totalPrice += (article.price - (article.price * (article.réduction / 100))) * article.quantity;
+;
         });
 
         prixTotalElement.textContent = totalPrice.toFixed(2) + ' €';
@@ -61,13 +62,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (panierData && panierData.length > 0) {
         panierData.forEach((article, index) => {
-            const total = article.price * article.quantity;
+            const total = (article.price - (article.price * (article.réduction / 100))) * article.quantity;
             const articleDiv = document.createElement('div');
             articleDiv.classList.add('article_line');
 
             articleDiv.innerHTML = `
                 <div class="img_article">
+                <a href="article.html?id=${article.id}">
                     <img id="article_img" src="${article.image}" alt="">
+                </a>
                 </div>
                 <div class="name_desc">
                     <p class="name_article">${article.name}</p>

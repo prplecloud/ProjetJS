@@ -15,6 +15,7 @@ router.get('/categories', controllers.getCategories);
 router.get('/products/search/:name', controllers.searchProductsByName);
 
 
+
 router.get('/products/promotion', controllers.getProductsByPromo);
 
 module.exports = router;

@@ -53,6 +53,7 @@ main {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    align-items: center;
     margin-bottom: 10px;
     width: 100%;
     flex-wrap: wrap;
@@ -237,6 +238,9 @@ select {
 .tri_sub_ctn[data-selected="true"] .checkbox::after {
     content: '✕';
     color: red;
+    position: relative;
+    bottom: 2px;
+    left: 3px;
 }
 
 h4 {
@@ -312,4 +316,22 @@ optgroup {
     .prix {
         font-size: 0.75em;
     }
+}
+
+.page-button {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    margin: 0 4px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.page-button:hover {
+    background-color: darkorange;
+}
+
+.page-button.active {
+    background-color: darkorange;
 }

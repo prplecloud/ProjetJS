@@ -181,6 +181,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
     function addToCart(product) {
+        let price = product.price;
+        let priceWithReduction = product.price;
+        let priceClass = 'prix-initial'; 
+        if (product.réduction !== 0) {
+            priceWithReduction = product.price - (product.price * (product.réduction / 100));
+            priceClass = 'prix-initial-promo'; 
+        }
         const quantity = parseInt(quantityInput.value);
         let cart = JSON.parse(localStorage.getItem('panier')) || [];
         
@@ -193,6 +200,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 name: product.name,
                 price: product.price,
                 image: product.image_url,
+                réduction: priceWithReduction,
+                stock: product.stock,
                 quantity: quantity
             });
         }
