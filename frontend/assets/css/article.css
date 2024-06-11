@@ -88,13 +88,26 @@ main {
     font-family: 'Rubik_Black';
     padding: 10px 20px;
     width: 50%;
+    margin-right: 20px;
+}
+
+.item_button:active {
+    background-color: #f9b142;
 }
 
 .button {
     display: flex;
-    align-items: center;
-    justify-content: center;
+ 
+    margin: 20px 0;
+
 }
+
+#addedMessage {
+    color: green;
+    font-family: 'Rubik_medium';
+    font-size: 1.5em;
+}
+
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
@@ -273,11 +286,7 @@ input[type="number"]::-webkit-outer-spin-button {
     font-family: 'Rubik_Light';
 }
 
-.button {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-}
+
 
 .color1 {
     background-color: #FFE314;

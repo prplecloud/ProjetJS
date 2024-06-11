@@ -280,6 +280,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         localStorage.setItem('panier', JSON.stringify(cart));
-        alert('Produit ajouté au panier');
+        updateCartBubble();
+
     }
 });
+
+document.querySelector('.item_button').addEventListener('click', function() {
+    document.getElementById('addedMessage').style.display = 'block'; // Affiche le message "Article ajouté"
+    setTimeout(function() {
+        document.getElementById('addedMessage').style.display = 'none'; // Masque le message après 2 secondes
+    }, 2000); // Durée d'affichage du message en millisecondes (ici, 2000 ms = 2 secondes)
+});
+
