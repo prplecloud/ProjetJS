@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+
     function incrementQuantity() {
         var currentValue = parseInt(quantityInput.value);
         var stock = parseInt(document.getElementById('product_stock').textContent.split(': ')[1]);
@@ -30,43 +31,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var mainImage = document.getElementById('img_article');
     var subImages = document.querySelectorAll('.sub_img');
-
-    if (mainImage && subImages) {
-        subImages.forEach(function(image) {
-            image.addEventListener('click', function() {
-                var clickedImagePath = image.getAttribute('src');
-                var currentMainImagePath = mainImage.getAttribute('src');
-
-                if (currentMainImagePath !== clickedImagePath) {
-                    mainImage.setAttribute('src', clickedImagePath);
-                    image.setAttribute('src', currentMainImagePath);
-                }
-            });
-        });
-    }
-
     var currentIndex = 0;
-
     var leftButton = document.getElementById('left');
     var rightButton = document.getElementById('right');
 
-    if (leftButton && rightButton) {
-        leftButton.addEventListener('click', function() {
-            currentIndex = (currentIndex === 0) ? subImages.length - 1 : currentIndex - 1;
-            swapImages();
-        });
 
-        rightButton.addEventListener('click', function() {
-            currentIndex = (currentIndex === subImages.length - 1) ? 0 : currentIndex + 1;
-            swapImages();
-        });
-    }
+   
 
-    function swapImages() {
-        var tempSrc = mainImage.src;
-        mainImage.src = subImages[currentIndex].src;
-        subImages[currentIndex].src = tempSrc;
-    }
+  
 
     mainImage.addEventListener('click', function() {
         var fullscreenImage = document.createElement('div');
@@ -84,6 +56,26 @@ document.addEventListener('DOMContentLoaded', function() {
             fullscreenImage.remove();
         });
     });
+
+    function createSubImgWrapper(imageUrl) {
+        const subImgWrapper = document.createElement('div');
+        subImgWrapper.classList.add('sub_img_wrapper');
+    
+        const img = document.createElement('img');
+        img.classList.add('sub_img');
+        img.src = imageUrl;
+        img.alt = '';
+    
+        const blueBar = document.createElement('div');
+        blueBar.classList.add('blue-bar');
+    
+        subImgWrapper.appendChild(img);
+        subImgWrapper.appendChild(blueBar);
+    
+        return subImgWrapper;
+    }
+
+    
 
     const params = new URLSearchParams(window.location.search);
     const productId = params.get('id');
@@ -127,6 +119,87 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         document.getElementById('img_article').src = product.image_url;
         document.getElementById('img_article').alt = product.name;
+
+        document.getElementById('img_article').src = product.image_url;
+        document.getElementById('img_article').alt = product.name;
+    
+        const subImagesContainer = document.querySelector('.sub_img_ctn');
+        subImagesContainer.innerHTML = '';
+    
+        if (product.image_url) {
+            const mainImgWrapper = document.createElement('div');
+            mainImgWrapper.classList.add('sub_img_wrapper');
+    
+            const mainImg = document.createElement('img');
+            mainImg.classList.add('sub_img');
+            mainImg.src = product.image_url;
+            mainImg.alt = '';
+    
+            const blueBar = document.createElement('div');
+            blueBar.classList.add('blue-bar');
+    
+            mainImgWrapper.appendChild(mainImg);
+            mainImgWrapper.appendChild(blueBar);
+    
+            subImagesContainer.appendChild(mainImgWrapper);
+        }
+    
+        if (product.img_url2) {
+            const subImgWrapper2 = createSubImgWrapper(product.img_url2);
+            subImagesContainer.appendChild(subImgWrapper2);
+        }
+    
+        if (product.img_url3) {
+            const subImgWrapper3 = createSubImgWrapper(product.img_url3);
+            subImagesContainer.appendChild(subImgWrapper3);
+        }
+    
+        if (product.img_url4) {
+            const subImgWrapper4 = createSubImgWrapper(product.img_url4);
+            subImagesContainer.appendChild(subImgWrapper4);
+        }
+    
+        const subImages = document.querySelectorAll('.sub_img');
+        subImages[0].parentElement.classList.add('active');
+  
+        function highlightCurrentSubImage() {
+            subImages.forEach(img => {
+                if (img.parentElement) {
+                    img.parentElement.classList.remove('active');
+                }
+            });
+            if (subImages[currentIndex].parentElement) {
+                subImages[currentIndex].parentElement.classList.add('active');
+            }
+            mainImage.src = subImages[currentIndex].src;
+            
+        }
+
+        if (mainImage && subImages) {
+            subImages.forEach(function(image) {
+                image.addEventListener('click', function() {
+                    var clickedImagePath = image.getAttribute('src');
+                    var currentMainImagePath = mainImage.getAttribute('src');
+    
+                    mainImage.setAttribute('src', clickedImagePath);
+    
+                    subImages.forEach(img => img.parentElement.classList.remove('active'));
+                    image.parentElement.classList.add('active');
+                });
+            });
+        }
+    
+        if (leftButton && rightButton) {
+            leftButton.addEventListener('click', function() {
+                currentIndex = (currentIndex === 0) ? subImages.length - 1 : currentIndex - 1;
+                highlightCurrentSubImage();
+            });
+    
+            rightButton.addEventListener('click', function() {
+                currentIndex = (currentIndex === subImages.length - 1) ? 0 : currentIndex + 1;
+                highlightCurrentSubImage();
+            });
+        }
     
         if (product.langage_name && product.langage_name !== 'N/A') {
             document.getElementById('data1').textContent = product.langage_name;

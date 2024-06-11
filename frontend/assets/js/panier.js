@@ -50,12 +50,9 @@ document.addEventListener('DOMContentLoaded', function() {
             totalPrice += (article.price - (article.price * (article.réduction / 100))) * article.quantity;
 ;
         });
-
-        prixTotalElement.textContent = totalPrice.toFixed(2) + ' €';
-
         const prixLivraison = 5.90;
         const prixTTC = totalPrice + prixLivraison;
-
+        prixTotalElement.textContent = totalPrice.toFixed(2) + ' €';
         prixLivraisonElement.textContent = prixLivraison.toFixed(2) + ' €';
         prixTTCElement.textContent = prixTTC.toFixed(2) + ' €';
     }
