@@ -272,8 +272,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 id: productId,
                 name: product.name,
                 price: product.price,
-                image: product.image_url,
                 réduction: priceWithReduction,
+                image: product.image_url,
                 stock: product.stock,
                 quantity: quantity
             });

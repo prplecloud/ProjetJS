@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 quantityInput.value = 1;
             }
 
-            const newTotal = (article.price - (article.price * (article.réduction / 100))) * newQuantity;
+            const newTotal = article.réduction * newQuantity;
 
             prixTotal.textContent = newTotal.toFixed(2) + '€';
 
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         let totalPrice = 0;
         panierData.forEach(article => {
-            totalPrice += (article.price - (article.price * (article.réduction / 100))) * article.quantity;
+            totalPrice += article.réduction * article.quantity
 ;
         });
         const prixLivraison = 5.90;
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (panierData && panierData.length > 0) {
         panierData.forEach((article, index) => {
-            const total = (article.price - (article.price * (article.réduction / 100))) * article.quantity;
+            const total = article.réduction * article.quantity;
             const articleDiv = document.createElement('div');
             articleDiv.classList.add('article_line');
 
