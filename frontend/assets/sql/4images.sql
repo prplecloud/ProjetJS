@@ -16,8 +16,6 @@ VALUES ("Les Vaillants Fracasseurs"), ("L'Ère du Seigneur Suprême"), ("Hérita
 
 INSERT INTO `products`(`name`, `price`, `stock`, `image_url`, `image_url2`, `image_url3`, `image_url4`, `description`, `réduction`, `edition_id`, `licence_id`, `state_id`, `langage_id`, `categories_id`) 
 VALUES 
-
-
 ("Pokémon - Boite de Boosters Français - Display 36 Boosters EV06 - Ecarlate et Violet - Mascarade Crépusculaire
 ", 169.99, 3, 
 "assets/img/articles/Pokemon/Blister/Français/Mascarade.jpg", "assets/img/articles/Pokemon/booster/Français/Mascarade2.jpg", "assets/img/articles/Pokemon/booster/Français/Mascarade3.jpg", "assets/img/articles/Pokemon/booster/Français/Mascarade4.jpg",
@@ -85,22 +83,6 @@ Plus de 170 cartes
 Plus de 20 cartes Dresseur et une nouvelle carte Énergie spéciale
 VERSION FRANÇAISE" , 0, 13, 1, 1, 1, 1),
 
-
---ici
-("Pokémon TCG : Scarlet & Violet — Temporal Forces Elite Trainer Box – Walking Wake", 54.90, 2, 
-"assets/img/articles/Pokemon/coffrets/Forces-Temporelles1FR.jpg", "assets/img/articles/Pokemon/coffrets/Forces-Temporelles1FR2.jpg",
-"10 card booster.
-The ranks of Past Time and Future Time Pokémon continue to grow. Watersnake-ex frees herself from the chains of the past alongside Ire-Lightning-ex, while Iron-Green-ex imposes high-tech justice with Iron-Head-ex. Outside of Zone Zero, Triopikeau and Farigiraf switch types as Pokémon-ex Teracrystal, and Pokémon Trainers around the world prepare for the return of HIGH-TECH cards with powerful and unique effects. A time rift has opened, bringing with it wild beasts and futuristic creatures in the Pokémon TCG: Scarlet and Purple – Temporal Forces expansion!
-More than 160 cards:
-Return of HIGH-TECH cards: 6 Trainer cards and a special Energy
-More new Past Time and Future Time Pokémon
-More than a dozen brand-new Pokémon-ex, including a different type of Teracrystal Pokémon-ex
-Dozens of Pokémon and Trainer cards with special illustrations.
-Key points
-Plus 180 cards including 15 new Pokémon-ex
-The introduction into the Pokémon TCG of Paradox Pokémon, new Past Time and Future Time Pokémon
-Pokémon-ex Teracrystal whose type has changed with an appearance reminiscent of crystals, notably a Water-type Garchomp-ex
-ENGLISH VERSION" , 0, 9, 1, 1, 2, 4),
 
 
 ("Pokémon - Coffret - EV04 Ecarlate et Violet - Faille Paradoxe - Dresseur d'Elite : Garde-de-Fer

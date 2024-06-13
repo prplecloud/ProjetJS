@@ -186,4 +186,4 @@ Chaque Boîte des Dieux du Pharaon 2022 contient 3 grands Méga-Packs, chacun av
 Chaque boîte contient au total* :
 3 Cartes Secrètes Rares Prismatiques, 6 Cartes Ultra Rares, 6 Cartes Super Rares, 3 Cartes Rares, 36 Cartes Communes
 Le méga-set de la Boîte Méga-Pack 2022 inclut principalement des cartes populaires sorties en 2021, parmi lesquelles Vortex Embrasé, Foudre Amplifiée, L'Aube de la Majesté, Explosion de la Destinée, et bien d'autres !" , 0, 15, 2, 1, 1, 5),
-("CARTE DRAGON POUSSIERE D'ETOILE COLLECTOR RARE", 29.99, 1, "assets/img/articles/Yu-Gi-Oh/carte/drg-poussière.jpg", "Carte Dragon Poussière d'Etoile neuve" , 0, 15, 2, 1, 1, 2),
+("CARTE DRAGON POUSSIERE D'ETOILE COLLECTOR RARE", 29.99, 1, "assets/img/articles/Yu-Gi-Oh/carte/drg-poussière.jpg", "Carte Dragon Poussière d'Etoile neuve" , 0, 15, 2, 1, 1, 2);

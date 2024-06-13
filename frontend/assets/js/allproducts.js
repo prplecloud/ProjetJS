@@ -1,21 +1,18 @@
-const url = 'http://localhost:3000/api/products';
-
-let currentPage = 1;
-const productsPerPage = 9;
-let allProductsData = [];
-
 document.addEventListener('DOMContentLoaded', () => {
     let activeFilters = [];
     let selectedLanguage = '';
     let selectedEdition = '';
+    let currentPage = 1;
+    const productsPerPage = 9;
+    let allProductsData = [];
+    const url = 'http://localhost:3000/api/products';
 
     function getProducts() {
         fetch(url)
             .then(response => response.json())
             .then(data => {
                 allProductsData = data;
-                applyFiltersAndSort(); 
-                displayPagination();
+                applyFiltersAndSort();
                 console.log(data);
             })
             .catch(error => {
@@ -24,31 +21,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     document.getElementById('sort-select').addEventListener('change', () => {
-        applyFiltersAndSort();
+        resetPaginationAndApplyFilters();
     });
 
     document.querySelectorAll('.tri_sub_ctn').forEach(filterDiv => {
         filterDiv.addEventListener('click', (event) => {
             const filterId = event.currentTarget.id;
             toggleFilter(filterId);
-            applyFiltersAndSort();
             updateCheckbox(filterDiv);
+            resetPaginationAndApplyFilters();
         });
     });
 
     document.getElementById('language-select').addEventListener('change', (event) => {
         selectedLanguage = event.target.value;
-        applyFiltersAndSort();
+        resetPaginationAndApplyFilters();
     });
 
     document.getElementById('edition-select').addEventListener('change', (event) => {
         selectedEdition = event.target.value;
-        applyFiltersAndSort();
+        resetPaginationAndApplyFilters();
     });
 
     document.getElementById('clear_filter').addEventListener('click', () => {
         clearFilters();
-        applyFiltersAndSort();
+        resetPaginationAndApplyFilters();
     });
 
     function toggleFilter(filterId) {
@@ -63,12 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateCheckbox(filterDiv) {
         const isSelected = filterDiv.getAttribute('data-selected') === 'true';
         filterDiv.setAttribute('data-selected', !isSelected);
-    }
-
-    function applyFiltersAndSort() {
-        let filteredProducts = filterProducts(allProductsData, activeFilters, selectedLanguage, selectedEdition);
-        filteredProducts = sortProducts(filteredProducts, document.getElementById('sort-select').value);
-        displayAllProducts(filteredProducts);
     }
 
     function sortProducts(products, direction) {
@@ -156,8 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('edition-select').value = '';
     }
 
-   
-
     function displayAllProducts(products) {
         const productsList = document.querySelector('.articles');
         productsList.innerHTML = '';
@@ -210,79 +199,43 @@ document.addEventListener('DOMContentLoaded', () => {
                 event.target.src = `assets/img/heart/${event.target.classList.contains('filled-heart') ? 'filled-heart' : 'empty-heart'}.png`;
             });
         });
+
         heartImgUpdate();
         updateHeart();
-
     }
-    getProducts();
-    displayPagination();
-});
 
-function heartImgUpdate() {
-    document.querySelectorAll('.empty-heart').forEach(emptyHeart => {
-        emptyHeart.addEventListener('click', function(event) {
-            event.preventDefault();
-            const isHeartEmpty = this.src.includes('empty-heart');
-            const productId = this.closest('.article').getAttribute('data-product-id');
+    function displayPagination(filteredProducts) {
+        const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+        const paginationContainer = document.querySelector('.pagination');
 
-            if (isHeartEmpty) {
-                this.src = 'assets/img/heart/filled-heart.png';
-                storeInLocalStorage(productId);
-            } else {
-                this.src = 'assets/img/heart/empty-heart.png';
-                removeFromLocalStorage(productId);
+        paginationContainer.innerHTML = '';
+
+        for (let i = 1; i <= totalPages; i++) {
+            const pageButton = document.createElement('button');
+            pageButton.textContent = i;
+            pageButton.classList.add('page-button');
+            if (i === currentPage) {
+                pageButton.classList.add('active');
             }
-        });
-    });
-}
-
-
-function storeInLocalStorage(productId) {
-    let storedProducts = JSON.parse(localStorage.getItem('storedProducts')) || [];
-    if (!storedProducts.includes(productId)) {
-        storedProducts.push(productId);
-        localStorage.setItem('storedProducts', JSON.stringify(storedProducts));
-    }
-}
-
-function removeFromLocalStorage(productId) {
-    let storedProducts = JSON.parse(localStorage.getItem('storedProducts')) || [];
-    storedProducts = storedProducts.filter(id => id !== productId);
-    localStorage.setItem('storedProducts', JSON.stringify(storedProducts));
-}
-
-function updateHeart() {
-    const storedProducts = JSON.parse(localStorage.getItem('storedProducts')) || [];
-    document.querySelectorAll('.empty-heart').forEach(emptyHeart => {
-        const productId = emptyHeart.closest('.article').getAttribute('data-product-id');
-        if (storedProducts.includes(productId)) {
-            emptyHeart.src = 'assets/img/heart/filled-heart.png';
-        }
-    });
-}
-
-
-function displayPagination() {
-    const totalPages = Math.ceil(allProductsData.length / productsPerPage);
-    const paginationContainer = document.querySelector('.pagination');
-
-    paginationContainer.innerHTML = '';
-
-    for (let i = 1; i <= totalPages; i++) {
-        const pageButton = document.createElement('button');
-        pageButton.textContent = i;
-        pageButton.classList.add('page-button');
-        if (i === currentPage) {
-            pageButton.classList.add('active');
-        }
-        pageButton.addEventListener('click', () => {
-            currentPage = i;
-            applyFiltersAndSort();
-            document.querySelectorAll('.page-button').forEach(button => {
-                button.classList.remove('active');
+            pageButton.addEventListener('click', () => {
+                currentPage = i;
+                applyFiltersAndSort();
             });
-            pageButton.classList.add('active');
-        });
-        paginationContainer.appendChild(pageButton);
+            paginationContainer.appendChild(pageButton);
+        }
     }
-}
+
+    function applyFiltersAndSort() {
+        let filteredProducts = filterProducts(allProductsData, activeFilters, selectedLanguage, selectedEdition);
+        filteredProducts = sortProducts(filteredProducts, document.getElementById('sort-select').value);
+        displayAllProducts(filteredProducts);
+        displayPagination(filteredProducts);
+    }
+
+    function resetPaginationAndApplyFilters() {
+        currentPage = 1;
+        applyFiltersAndSort();
+    }
+
+    getProducts();
+});
