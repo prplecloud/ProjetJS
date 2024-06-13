@@ -58,40 +58,46 @@ function displayProductsByLicence(products) {
 
     productsList.appendChild(categoryContainer);
 
+    heartImgUpdate();
+    updateHeart();
+}
+
+
+
+function heartImgUpdate() {
     document.querySelectorAll('.empty-heart').forEach(emptyHeart => {
         emptyHeart.addEventListener('click', function(event) {
             event.preventDefault();
             const isHeartEmpty = this.src.includes('empty-heart');
+            const productId = this.closest('.article').getAttribute('data-product-id');
+
             if (isHeartEmpty) {
                 this.src = 'assets/img/heart/filled-heart.png';
-                const productId = this.closest('.article').getAttribute('data-product-id');
-                storeProductInLocalStorage(productId);
+                storeInLocalStorage(productId);
             } else {
                 this.src = 'assets/img/heart/empty-heart.png';
-                const productId = this.closest('.article').getAttribute('data-product-id');
-                removeProductFromLocalStorage(productId);
+                removeFromLocalStorage(productId);
             }
         });
     });
-
-    updateFavoritedProductsDisplay();
 }
 
 
-
-function storeProductInLocalStorage(productId) {
+function storeInLocalStorage(productId) {
     let storedProducts = JSON.parse(localStorage.getItem('storedProducts')) || [];
-    storedProducts.push(productId);
-    localStorage.setItem('storedProducts', JSON.stringify(storedProducts));
+    if (!storedProducts.includes(productId)) {
+        storedProducts.push(productId);
+        localStorage.setItem('storedProducts', JSON.stringify(storedProducts));
+    }
 }
 
-function removeProductFromLocalStorage(productId) {
+function removeFromLocalStorage(productId) {
     let storedProducts = JSON.parse(localStorage.getItem('storedProducts')) || [];
     storedProducts = storedProducts.filter(id => id !== productId);
     localStorage.setItem('storedProducts', JSON.stringify(storedProducts));
 }
 
-function updateFavoritedProductsDisplay() {
+function updateHeart() {
     const storedProducts = JSON.parse(localStorage.getItem('storedProducts')) || [];
     document.querySelectorAll('.empty-heart').forEach(emptyHeart => {
         const productId = emptyHeart.closest('.article').getAttribute('data-product-id');

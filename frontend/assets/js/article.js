@@ -2,6 +2,10 @@ document.addEventListener('DOMContentLoaded', function() {
     var quantityInput = document.getElementById("quantity");
     var decreaseButton = document.querySelector("#decrease");
     var increaseButton = document.querySelector("#increase");
+    var mainImage = document.getElementById('img_article');
+    var currentIndex = 0;
+    var leftButton = document.getElementById('left');
+    var rightButton = document.getElementById('right');
 
     if (decreaseButton && increaseButton) {
         decreaseButton.addEventListener("click", function () {
@@ -29,16 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    var mainImage = document.getElementById('img_article');
-    var subImages = document.querySelectorAll('.sub_img');
-    var currentIndex = 0;
-    var leftButton = document.getElementById('left');
-    var rightButton = document.getElementById('right');
 
-
-   
-
-  
 
     mainImage.addEventListener('click', function() {
         var fullscreenImage = document.createElement('div');
@@ -89,13 +84,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const shortDescription = fullDescription.substring(0, 150) + '...';
             descriptionElement.textContent = shortDescription;
     
-            const moreSpan = document.createElement('span');
-            moreSpan.textContent = ' more';
-            moreSpan.style.color = 'blue';
-            moreSpan.style.cursor = 'pointer';
-            descriptionElement.appendChild(moreSpan);
+            const hideDesc = document.createElement('span');
+            hideDesc.textContent = '...En voir plus';
+            hideDesc.style.color = 'blue';
+            hideDesc.style.cursor = 'pointer';
+            descriptionElement.appendChild(hideDesc);
     
-            moreSpan.addEventListener('click', function() {
+            hideDesc.addEventListener('click', function() {
                 descriptionElement.textContent = fullDescription;
             });
         } else {
@@ -103,6 +98,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     
         document.getElementById('product_stock').textContent = `Stock: ${product.stock}`;
+
+        const addButton = document.querySelector('.item_button');
+        if (product.stock === 0) {
+            addButton.disabled = true;
+            addButton.textContent = 'Rupture de stock';
+        }
+
  
         let price = product.price;
         let priceWithReduction = product.price;
@@ -118,10 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
         `;
         document.getElementById('img_article').src = product.image_url;
-        document.getElementById('img_article').alt = product.name;
 
-        document.getElementById('img_article').src = product.image_url;
-        document.getElementById('img_article').alt = product.name;
     
         const subImagesContainer = document.querySelector('.sub_img_ctn');
         subImagesContainer.innerHTML = '';
@@ -144,18 +143,18 @@ document.addEventListener('DOMContentLoaded', function() {
             subImagesContainer.appendChild(mainImgWrapper);
         }
     
-        if (product.img_url2) {
-            const subImgWrapper2 = createSubImgWrapper(product.img_url2);
+        if (product.image_url2) {
+            const subImgWrapper2 = createSubImgWrapper(product.image_url2);
             subImagesContainer.appendChild(subImgWrapper2);
         }
     
-        if (product.img_url3) {
-            const subImgWrapper3 = createSubImgWrapper(product.img_url3);
+        if (product.image_url3) {
+            const subImgWrapper3 = createSubImgWrapper(product.image_url3);
             subImagesContainer.appendChild(subImgWrapper3);
         }
     
-        if (product.img_url4) {
-            const subImgWrapper4 = createSubImgWrapper(product.img_url4);
+        if (product.image_url4) {
+            const subImgWrapper4 = createSubImgWrapper(product.image_url4);
             subImagesContainer.appendChild(subImgWrapper4);
         }
     
@@ -253,42 +252,52 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error("Erreur lors de la récupération des détails du produit :", error);
         });
 
-    function addToCart(product) {
-        let price = product.price;
-        let priceWithReduction = product.price;
-        let priceClass = 'prix-initial'; 
-        if (product.réduction !== 0) {
-            priceWithReduction = product.price - (product.price * (product.réduction / 100));
-            priceClass = 'prix-initial-promo'; 
-        }
-        const quantity = parseInt(quantityInput.value);
-        let cart = JSON.parse(localStorage.getItem('panier')) || [];
+        function addToCart(product) {
+            let price = product.price;
+            let priceWithReduction = product.price;
+            let priceClass = 'prix-initial'; 
+            if (product.réduction !== 0) {
+                priceWithReduction = product.price - (product.price * (product.réduction / 100));
+                priceClass = 'prix-initial-promo'; 
+            }
+            const quantity = parseInt(quantityInput.value);
+            let cart = JSON.parse(localStorage.getItem('panier')) || [];
+            
+            const existingProductIndex = cart.findIndex(item => item.id === productId);
         
-        const existingProduct = cart.find(item => item.id === productId);
-        if (existingProduct) {
-            existingProduct.quantity += quantity;
-        } else {
-            cart.push({
-                id: productId,
-                name: product.name,
-                price: product.price,
-                réduction: priceWithReduction,
-                image: product.image_url,
-                stock: product.stock,
-                quantity: quantity
-            });
+            if (existingProductIndex !== -1) {
+                const totalQuantity = cart[existingProductIndex].quantity + quantity;
+                if (totalQuantity <= product.stock) {
+                    cart[existingProductIndex].quantity = totalQuantity;
+                } else {
+                    cart[existingProductIndex].quantity = product.stock;
+                    alert(`Vous ne pouvez pas ajouter plus de ${product.stock} articles de ${product.name}.`);
+                }
+            } else {
+                if (quantity <= product.stock) {
+                    cart.push({
+                        id: productId,
+                        name: product.name,
+                        price: product.price,
+                        réduction: priceWithReduction,
+                        image: product.image_url,
+                        stock: product.stock,
+                        quantity: quantity
+                    });
+                } else {
+                    alert(`Vous ne pouvez pas ajouter plus de ${product.stock} articles de "${product.name}".`);
+                }
+            }
+        
+            localStorage.setItem('panier', JSON.stringify(cart));
+            updateCartBubble();
         }
-
-        localStorage.setItem('panier', JSON.stringify(cart));
-        updateCartBubble();
-
-    }
 });
 
 document.querySelector('.item_button').addEventListener('click', function() {
-    document.getElementById('addedMessage').style.display = 'block'; // Affiche le message "Article ajouté"
+    document.getElementById('addedMessage').style.display = 'block';
     setTimeout(function() {
-        document.getElementById('addedMessage').style.display = 'none'; // Masque le message après 2 secondes
-    }, 2000); // Durée d'affichage du message en millisecondes (ici, 2000 ms = 2 secondes)
+        document.getElementById('addedMessage').style.display = 'none';
+    }, 2000); 
 });
 

@@ -5,8 +5,10 @@ const port = 3000;
 
 app.use(cors());
 const productsRoutes = require('./routes/products');
-
+app.use(express.json());
 app.use('/api', productsRoutes);
+
+
 
 
 app.listen(port, () => {

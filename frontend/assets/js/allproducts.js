@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let activeFilters = [];
     let selectedLanguage = '';
     let selectedEdition = '';
-    let favorites = JSON.parse(localStorage.getItem('favorites')) || []; 
 
     function getProducts() {
         fetch(url)
@@ -157,27 +156,15 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('edition-select').value = '';
     }
 
-    function toggleFavorite(productId) {
-        const index = favorites.indexOf(productId);
-        if (index > -1) {
-            favorites.splice(index, 1);
-        } else {
-            favorites.push(productId);
-        }
-        localStorage.setItem('storedProducts', JSON.stringify(favorites));
-    }
-
-    function isFavorite(productId) {
-        return favorites.includes(productId);
-    }
+   
 
     function displayAllProducts(products) {
         const productsList = document.querySelector('.articles');
         productsList.innerHTML = '';
 
         const startIndex = (currentPage - 1) * productsPerPage;
-    const endIndex = startIndex + productsPerPage;
-    const displayedProducts = products.slice(startIndex, endIndex);
+        const endIndex = startIndex + productsPerPage;
+        const displayedProducts = products.slice(startIndex, endIndex);
 
         const allProductsContainer = document.createElement('div');
         allProductsContainer.classList.add('category_ctn');
@@ -193,7 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 priceWithReduction = product.price - (product.price * (product.réduction / 100));
                 priceClass = 'prix-initial-promo';
             }
-            const isFav = isFavorite(product.products_id) ? 'filled-heart' : 'empty-heart';
 
             productElement.innerHTML = `
             <div class="coeur_ctn">
@@ -219,58 +205,84 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.coeur').forEach(heart => {
             heart.addEventListener('click', (event) => {
                 const productId = event.target.getAttribute('data-id');
-                toggleFavorite(productId);
                 event.target.classList.toggle('filled-heart');
                 event.target.classList.toggle('empty-heart');
                 event.target.src = `assets/img/heart/${event.target.classList.contains('filled-heart') ? 'filled-heart' : 'empty-heart'}.png`;
             });
         });
+        heartImgUpdate();
+        updateHeart();
 
-        updateFavoritedProductsDisplay();
     }
-
-    function updateFavoritedProductsDisplay() {
-        const storedProducts = JSON.parse(localStorage.getItem('storedProducts')) || [];
-        document.querySelectorAll('.coeur').forEach(heart => {
-            const productId = heart.getAttribute('data-id');
-            if (storedProducts.includes(productId)) {
-                heart.src = 'assets/img/heart/filled-heart.png';
-                heart.classList.add('filled-heart');
-                heart.classList.remove('empty-heart');
-            }
-        });
-    }
-
-    function displayPagination() {
-        const totalPages = Math.ceil(allProductsData.length / productsPerPage);
-        const paginationContainer = document.querySelector('.pagination');
-    
-        paginationContainer.innerHTML = '';
-    
-        for (let i = 1; i <= totalPages; i++) {
-            const pageButton = document.createElement('button');
-            pageButton.textContent = i;
-            pageButton.classList.add('page-button');
-            if (i === currentPage) {
-                pageButton.classList.add('active');
-            }
-            pageButton.addEventListener('click', () => {
-                currentPage = i;
-                applyFiltersAndSort();
-                // Supprimer la classe active de tous les boutons de pagination
-                document.querySelectorAll('.page-button').forEach(button => {
-                    button.classList.remove('active');
-                });
-                // Ajouter la classe active au bouton cliqué
-                pageButton.classList.add('active');
-            });
-            paginationContainer.appendChild(pageButton);
-        }
-    }
-    
-
     getProducts();
     displayPagination();
-
 });
 
+function heartImgUpdate() {
+    document.querySelectorAll('.empty-heart').forEach(emptyHeart => {
+        emptyHeart.addEventListener('click', function(event) {
+            event.preventDefault();
+            const isHeartEmpty = this.src.includes('empty-heart');
+            const productId = this.closest('.article').getAttribute('data-product-id');
+
+            if (isHeartEmpty) {
+                this.src = 'assets/img/heart/filled-heart.png';
+                storeInLocalStorage(productId);
+            } else {
+                this.src = 'assets/img/heart/empty-heart.png';
+                removeFromLocalStorage(productId);
+            }
+        });
+    });
+}
+
+
+function storeInLocalStorage(productId) {
+    let storedProducts = JSON.parse(localStorage.getItem('storedProducts')) || [];
+    if (!storedProducts.includes(productId)) {
+        storedProducts.push(productId);
+        localStorage.setItem('storedProducts', JSON.stringify(storedProducts));
+    }
+}
+
+function removeFromLocalStorage(productId) {
+    let storedProducts = JSON.parse(localStorage.getItem('storedProducts')) || [];
+    storedProducts = storedProducts.filter(id => id !== productId);
+    localStorage.setItem('storedProducts', JSON.stringify(storedProducts));
+}
+
+function updateHeart() {
+    const storedProducts = JSON.parse(localStorage.getItem('storedProducts')) || [];
+    document.querySelectorAll('.empty-heart').forEach(emptyHeart => {
+        const productId = emptyHeart.closest('.article').getAttribute('data-product-id');
+        if (storedProducts.includes(productId)) {
+            emptyHeart.src = 'assets/img/heart/filled-heart.png';
+        }
+    });
+}
+
+
+function displayPagination() {
+    const totalPages = Math.ceil(allProductsData.length / productsPerPage);
+    const paginationContainer = document.querySelector('.pagination');
+
+    paginationContainer.innerHTML = '';
+
+    for (let i = 1; i <= totalPages; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.textContent = i;
+        pageButton.classList.add('page-button');
+        if (i === currentPage) {
+            pageButton.classList.add('active');
+        }
+        pageButton.addEventListener('click', () => {
+            currentPage = i;
+            applyFiltersAndSort();
+            document.querySelectorAll('.page-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            pageButton.classList.add('active');
+        });
+        paginationContainer.appendChild(pageButton);
+    }
+}

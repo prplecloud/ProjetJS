@@ -179,3 +179,37 @@ exports.getProductsByPromo = (req, res) => {
   });
 }
 
+exports.updateStock = async (req, res) => {
+  const productsToUpdate = req.body;
+
+    try {
+        for (const product of productsToUpdate) {
+            const productId = product.id;
+            const quantity = product.quantity;
+
+            pool.getConnection((err, connection) => {
+                if (err) {
+                    console.error('Erreur de connexion à la base de données:', err);
+                    return res.status(500).json({ error: 'Erreur de connexion à la base de données' });
+                }
+
+                const sql = 'UPDATE products SET stock = stock - ? WHERE products_id = ?';
+                connection.query(sql, [quantity, productId], (error, results) => {
+                    connection.release(); // Libérer la connexion après utilisation
+
+                    if (error) {
+                        console.error('Erreur lors de la mise à jour du stock:', error);
+                        return res.status(500).json({ error: 'Erreur lors de la mise à jour du stock' });
+                    }
+
+                    console.log(`Stock mis à jour pour le produit avec ID ${productId}`);
+                });
+            });
+        }
+
+        res.json({ message: 'Stock mis à jour avec succès' });
+    } catch (error) {
+        console.error('Erreur lors de la mise à jour du stock:', error);
+        res.status(500).json({ error: 'Erreur lors de la mise à jour du stock' });
+    }
+}

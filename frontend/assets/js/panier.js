@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updatePrice(articleDiv, article) {
         const quantityInput = articleDiv.querySelector('.formulaire_qty input[name="quantity"]');
-        const prixDesc = articleDiv.querySelector('.prix_desc');
         const prixTotal = articleDiv.querySelector('.prix p');
 
         quantityInput.addEventListener('change', function() {
@@ -16,11 +15,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             const newTotal = article.réduction * newQuantity;
-
             prixTotal.textContent = newTotal.toFixed(2) + '€';
 
             article.quantity = newQuantity;
-
             localStorage.setItem('panier', JSON.stringify(panierData));
 
             updateTotalPrice(panierData);
@@ -47,11 +44,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         let totalPrice = 0;
         panierData.forEach(article => {
-            totalPrice += article.réduction * article.quantity
-;
+            totalPrice += article.réduction * article.quantity;
         });
+
         const prixLivraison = 5.90;
         const prixTTC = totalPrice + prixLivraison;
+
         prixTotalElement.textContent = totalPrice.toFixed(2) + ' €';
         prixLivraisonElement.textContent = prixLivraison.toFixed(2) + ' €';
         prixTTCElement.textContent = prixTTC.toFixed(2) + ' €';
@@ -65,9 +63,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
             articleDiv.innerHTML = `
                 <div class="img_article">
-                <a href="article.html?id=${article.id}">
-                    <img id="article_img" src="${article.image}" alt="">
-                </a>
+                    <a href="article.html?id=${article.id}">
+                        <img id="article_img" src="${article.image}" alt="">
+                    </a>
                 </div>
                 <div class="name_desc">
                     <p class="name_article">${article.name}</p>
@@ -77,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <input type="number" name="quantity" id="quantity" min="1" max="${article.stock}" value="${article.quantity}">
                 </form>
                 <div class="prix">
-                    <p>${total.toFixed(2)}€</p>
+                    <p>${total.toFixed(2)} €</p>
                 </div>
                 <img src="assets/img/poubelle/trash-1.png" alt="trash" class="trash">
             `;

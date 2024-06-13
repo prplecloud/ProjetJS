@@ -13,6 +13,8 @@ router.get('/products/states/:id', controllers.getProductByState);
 router.get('/boosters', controllers.getBoosters);
 router.get('/categories', controllers.getCategories);
 router.get('/products/search/:name', controllers.searchProductsByName);
+router.post('/update-stock', controllers.updateStock);
+
 
 
 
