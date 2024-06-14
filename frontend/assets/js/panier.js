@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
             updateTotalPrice(panierData);
         });
     }
+   
 
     function deleteArticle(articleIndex) {
         panierData.splice(articleIndex, 1);
@@ -41,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
             prixTTCElement.textContent = '0.00 €';
             return;
         }
+
 
         let totalPrice = 0;
         panierData.forEach(article => {
@@ -91,6 +93,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     } else {
         articleAllDiv.innerHTML = "<p>Le panier est vide.</p>";
+        const btnCommande = document.querySelector('.commander_btn');
+            btnCommande.removeAttribute('href');
+            btnCommande.style.backgroundColor = 'grey';
+            btnCommande.style.cursor = 'not-allowed';
+            btnCommande.textContent = 'Panier vide';            
     }
 
     updateTotalPrice(panierData);

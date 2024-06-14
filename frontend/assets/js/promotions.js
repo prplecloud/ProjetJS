@@ -53,6 +53,9 @@ function displayProductsByLicence(products) {
                 ${product.réduction !== 0 ? `<span class="prix-réduit">${priceWithReduction.toFixed(2)}<span>€</span></span>` : ''}
             </p>
         `;
+        if (product.image_url2) {
+        switchImage(product, productElement);
+    }
         categoryContainer.appendChild(productElement);
     });
 
@@ -110,4 +113,34 @@ function updateHeart() {
 function isFavorite(productId) {
     const storedProducts = JSON.parse(localStorage.getItem('storedProducts')) || [];
     return storedProducts.includes(productId);
+}
+
+function switchImage(product, productElement) {
+    const articleImg = productElement.querySelector('.article_img');
+    const initialSrc = product.image_url;
+
+    articleImg.addEventListener('mouseover', () => {
+        articleImg.src = product.image_url2;
+    } );
+
+    articleImg.addEventListener('mouseout', () => {
+        articleImg.src = initialSrc;
+    }
+    );
+}
+
+function switchImage(yes2, yes) {
+
+    const articleImg = yes.querySelector('.article_img');
+    const initialSrc = yes2.image_url;
+
+    articleImg.addEventListener('mouseover', () => {
+        timeoutId = setTimeout(() => {
+            articleImg.src = yes2.image_url2;
+        }, 500);
+    });
+
+    articleImg.addEventListener('mouseout', () => {
+        articleImg.src = initialSrc;
+    });
 }

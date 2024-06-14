@@ -186,19 +186,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 </p>
             `;
 
+            if (product.image_url2){
+                switchImage(product, productElement);
+            }
+
             allProductsContainer.appendChild(productElement);
         });
 
         productsList.appendChild(allProductsContainer);
-
-        document.querySelectorAll('.coeur').forEach(heart => {
-            heart.addEventListener('click', (event) => {
-                const productId = event.target.getAttribute('data-id');
-                event.target.classList.toggle('filled-heart');
-                event.target.classList.toggle('empty-heart');
-                event.target.src = `assets/img/heart/${event.target.classList.contains('filled-heart') ? 'filled-heart' : 'empty-heart'}.png`;
-            });
-        });
 
         heartImgUpdate();
         updateHeart();
@@ -239,3 +234,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
     getProducts();
 });
+
+function heartImgUpdate() {
+    document.querySelectorAll('.empty-heart').forEach(emptyHeart => {
+        emptyHeart.addEventListener('click', function(event) {
+            event.preventDefault();
+            const isHeartEmpty = this.src.includes('empty-heart');
+            const productId = this.closest('.article').getAttribute('data-product-id');
+
+            if (isHeartEmpty) {
+                this.src = 'assets/img/heart/filled-heart.png';
+                storeInLocalStorage(productId);
+            } else {
+                this.src = 'assets/img/heart/empty-heart.png';
+                removeFromLocalStorage(productId);
+            }
+        });
+    });
+}
+
+function storeInLocalStorage(productId) {
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    if (!favorites.includes(productId)) {
+        favorites.push(productId);
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+    }
+}
+
+function removeFromLocalStorage(productId) {
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    favorites = favorites.filter(id => id !== productId);
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+}
+
+function updateHeart() {
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    document.querySelectorAll('.empty-heart').forEach(emptyHeart => {
+        const productId = emptyHeart.closest('.article').getAttribute('data-product-id');
+        if (favorites.includes(productId)) {
+            emptyHeart.src = 'assets/img/heart/filled-heart.png';
+        }
+    });
+}
+
+function switchImage(yes2, yes) {
+
+    const articleImg = yes.querySelector('.article_img');
+    const initialSrc = yes2.image_url;
+
+    articleImg.addEventListener('mouseover', () => {
+        timeoutId = setTimeout(() => {
+            articleImg.src = yes2.image_url2;
+        }, 500);
+    });
+
+    articleImg.addEventListener('mouseout', () => {
+        articleImg.src = initialSrc;
+    });
+}

@@ -1,19 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
     displayFavoriteProducts();
 });
-const storedProducts = JSON.parse(localStorage.getItem('storedProducts')) || [];
+const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
 function displayFavoriteProducts() {
     const favorisList = document.querySelector('.articles');
     favorisList.innerHTML = ''; 
 
 
-    if (storedProducts.length === 0) {
+    if (favorites.length === 0) {
         favorisList.innerHTML = '<p>Aucun produit favori trouvé.</p>';
         return;
     }
 
-    storedProducts.forEach(productId => {
+    favorites.forEach(productId => {
         fetch(`http://localhost:3000/api/products/${productId}`)
             .then(response => response.json())
             .then(product => {
@@ -35,13 +35,13 @@ function displayFavoriteProducts() {
 }
 
 function removeProductFromLocalStorage(productId) {
-    let storedProducts = JSON.parse(localStorage.getItem('storedProducts')) || [];
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
-    storedProducts = storedProducts.filter(id => id !== productId);
+    favorites = favorites.filter(id => id !== productId);
 
-    localStorage.setItem('storedProducts', JSON.stringify(storedProducts));
+    localStorage.setItem('favorites', JSON.stringify(favorites));
 
-    if (storedProducts.length === 0) {
+    if (favorites.length === 0) {
         favorisList.innerHTML = '<p>Aucun produit favori trouvé.</p>';
         return;
     }
@@ -65,7 +65,25 @@ function createProductElement(product) {
     <h2 class="product_name">${product.name}</h2>
     <p class="prix">Prix: ${product.price.toFixed(2)}<span>€</span></p>
 `;
-
+if (product.image_url2){
+    switchImage(product, productElement);
+}
     return productElement;
     
+}
+
+function switchImage(yes2, yes) {
+
+    const articleImg = yes.querySelector('.article_img');
+    const initialSrc = yes2.image_url;
+
+    articleImg.addEventListener('mouseover', () => {
+        timeoutId = setTimeout(() => {
+            articleImg.src = yes2.image_url2;
+        }, 500);
+    });
+
+    articleImg.addEventListener('mouseout', () => {
+        articleImg.src = initialSrc;
+    });
 }

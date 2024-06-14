@@ -23,7 +23,7 @@ VALUES
 Bienvenue sur les terres de Septentria, un lieu où les humains et les Pokémon vivent en harmonie avec la nature. Les légendes sont légion, mais la vérité n'est pas toujours là où on l'attend... Découvrez les mystères du Pokémon légendaire masqué, Ogerpon, qui apparaît en tant que Pokémon-ex Téracristal sous quatre types terrifiants, et faites équipe avec des Pokémon nouvellement découverts, tels qu'Ursaking Lune Vermeille-ex et Théffroyable-ex. Gagnant en puissance, Amphinobi, Lanssorien et Volcaropod nous éblouissent en tant que Pokémon-ex Téracristal, et davantage de cartes HIGH-TECH se joignent à la fête dans l'extension Écarlate et Violet - Mascarade Crépusculaire du JCC Pokémon.
 Chaque Display contient 36 boosters de 10 cartes en Français de l'extension Pokémon Écarlate et Violet - Mascarade Crépusculaire
 VERSION FRANÇAISE", 
-0, 16, 1, 1, 1, 3),
+10, 16, 1, 1, 1, 3),
 
 ("Pokémon - Booster Français - EV05 - Ecarlate et Violet - Forces Temporelles", 5.30, 10, 
 "assets/img/articles/Pokemon/booster/Français/forces-temporelles1FR.jpg", "assets/img/articles/Pokemon/booster/Français/forces-temporelles1FR-2.jpg", "assets/img/articles/Pokemon/booster/Français/forces-temporelles1FR-3.jpg", "assets/img/articles/Pokemon/booster/Français/forces-temporelles1FR-4.jpg", 
@@ -49,7 +49,7 @@ VERSION FRANÇAISE" , 0, 9, 1, 1, 1, 1),
 VERSION FRANÇAISE" , 0, 10, 1, 1, 1, 1),
 
 ("Pokémon - Booster Français - EV04 - Ecarlate et Violet - Faille Paradoxe", 5.90, 10, 
-"assets/img/articles/Pokemon/booster/Français/faille-paradoxe.jpg", "assets/img/articles/Pokemon/booster/Français/faille-paradoxe.jpg-2","assets/img/articles/Pokemon/booster/Français/faille-paradoxe-3.jpg","assets/img/articles/Pokemon/booster/Français/faille-paradoxe-4.jpg",
+"assets/img/articles/Pokemon/booster/Français/faille-paradoxe.jpg", "assets/img/articles/Pokemon/booster/Français/faille-paradoxe-2.jpg","assets/img/articles/Pokemon/booster/Français/faille-paradoxe-3.jpg","assets/img/articles/Pokemon/booster/Français/faille-paradoxe-4.jpg",
 "Booster de 10 cartes.
 Plongez dans les nuages et explorez des terres qui semblent intemporelles ! Avec leurs attaques féroces, les Pokémon Temps passé tels que Rugit-Lune-ex et Pelage-Sablé-ex apparaissent aux côtés de Pokémon Temps futur artificiels comme Gardede- Fer-ex et Paume-de-Fer-ex. Carchacrok-ex, Mewtwo-ex et d’autres Pokémon ne sont pas en reste, et se téracristallisent pour obtenir de nouveaux types. Quant à Carmadura-ex et Gromago-ex, ils rejoignent d’autres Pokémon-ex dans la bataille ! L’aventure vous attend, alors que les frontières temporelles s’entrechoquent dans Écarlate et Violet – Faille Paradoxe du JCC Pokémon.
 Contenu
@@ -67,7 +67,7 @@ Partez pour la région de Paldea ! Rencontrez les premiers partenaires Poussacha
 VERSION FRANÇAISE" , 0, 11, 1, 1, 1, 1),
 
 ("Pokémon - Booster Français - EB12 - Epée et Bouclier 12 - Tempête Argentée", 9.90, 10, 
-"assets/img/articles/Pokemon/booster/Français/tempête-argentée.png", "assets/img/articles/Pokemon/booster/Français/tempête-argentée-2.png","assets/img/articles/Pokemon/booster/Français/tempête-argentée-3.png","assets/img/articles/Pokemon/booster/Français/tempête-argentée-4.png",
+"assets/img/articles/Pokemon/booster/Français/tempête-argentée.png", "assets/img/articles/Pokemon/booster/Français/tempête-argentée-2.jpg","assets/img/articles/Pokemon/booster/Français/tempête-argentée-3.jpg","assets/img/articles/Pokemon/booster/Français/tempête-argentée-4.jpg",
 "Booster de 10 cartes.
 Offrez une Puissance VSTAR à n’importe quel Pokémon-V avec ces cartes Outil Pokémon spéciales. Attachez Pierre Scellée Sylvestre à l’un de vos Pokémon-V pour qu’il obtienne le talent Alchimie Star. Utilisez cette puissance VSTAR pour chercher dans votre deck une carte et l’ajouter à votre main, c’est parfait pour trouver LA carte dont vous avez besoin, quand vous en avez besoin. Si vous préférez l’offensive, vous pouvez attacher Pierre Scellée Terrestre à l’un de vos Pokémon-V pour qu’il obtienne l’attaque Gravité Star, qui place des marqueurs de dégâts sur chacun des Pokémon-V de votre adversaire jusqu’à ce qu’il ne reste à chacun d’eux que 100 PV. Renversez votre adversaire avec ces puissantes cartes Outil Pokémon, et faites de l’un de vos Pokémon une star !
 VERSION FRANÇAISE" , 0, 14, 1, 1, 1, 1),

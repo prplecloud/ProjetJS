@@ -90,6 +90,10 @@ function createProductElement(product) {
         </p>
     `;
 
+    if (product.image_url2){
+    switchImage(product, productElement);
+}
+
     return productElement;
 }
 
@@ -112,25 +116,39 @@ function heartImgUpdate() {
 }
 
 function storeInLocalStorage(productId) {
-    let storedProducts = JSON.parse(localStorage.getItem('storedProducts')) || [];
-    if (!storedProducts.includes(productId)) {
-        storedProducts.push(productId);
-        localStorage.setItem('storedProducts', JSON.stringify(storedProducts));
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    if (!favorites.includes(productId)) {
+        favorites.push(productId);
+        localStorage.setItem('favorites', JSON.stringify(favorites));
     }
 }
 
 function removeFromLocalStorage(productId) {
-    let storedProducts = JSON.parse(localStorage.getItem('storedProducts')) || [];
-    storedProducts = storedProducts.filter(id => id !== productId);
-    localStorage.setItem('storedProducts', JSON.stringify(storedProducts));
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    favorites = favorites.filter(id => id !== productId);
+    localStorage.setItem('favorites', JSON.stringify(favorites));
 }
 
 function updateHeart() {
-    const storedProducts = JSON.parse(localStorage.getItem('storedProducts')) || [];
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     document.querySelectorAll('.empty-heart').forEach(emptyHeart => {
         const productId = emptyHeart.closest('.article').getAttribute('data-product-id');
-        if (storedProducts.includes(productId)) {
+        if (favorites.includes(productId)) {
             emptyHeart.src = 'assets/img/heart/filled-heart.png';
         }
     });
+}
+
+function switchImage(yes2, yes) {
+    const articleImg = yes.querySelector('.article_img');
+    const initialSrc = yes2.image_url;
+
+    articleImg.addEventListener('mouseover', () => {
+        articleImg.src = yes2.image_url2;
+    });
+
+    articleImg.addEventListener('mouseout', () => {
+        articleImg.src = initialSrc;
+    });
+    
 }
