@@ -119,6 +119,7 @@ main {
     gap: 10px;
     flex-wrap: wrap;
     margin: 20px 0;
+    width: 100%;
 }
 
 .product_name {

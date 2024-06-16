@@ -1,3 +1,7 @@
+CREATE DATABASE e_commerce_js;
+
+USE e_commerce_js;
+
 CREATE TABLE users(
    users_id INT AUTO_INCREMENT,
    username VARCHAR(20),
