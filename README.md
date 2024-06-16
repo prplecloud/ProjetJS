@@ -42,7 +42,7 @@ Mettez comme valeur pour entrer dans votre database :**
 - Choix du serveur : Mysql
 
 **Ouvrez le projet dans votre IDE : 
-Copiez les fichiers .sql se trouvant dans frontend/assets en commencant par database.sql
+Copiez les fichiers .sql se trouvant dans frontend/assets dans votre base de donnée en commencant par database.sql
 Une fois celà fait, dirigez vous dans le dossier backend et tapez npm start dans le cmd.** 
 
 cd ./backend/ 
