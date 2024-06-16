@@ -28,19 +28,18 @@ Ce projet mettra en pratique les compétences acquises dans le module Challenge 
 
 ## **Installation :**
 Assurez-vous d’avoir Node.js, npm, et MySQL installés sur votre système.
-
 **Clonez ce dépôt GitHub sur votre machine :**
 
-git clone [https://github.com/EnzoCarbo/ProjetPersoPOO](https://github.com/prplecloud/ProjetJS)  
+git clone:  [[https://github.com/EnzoCarbo/ProjetPersoPOO](https://github.com/prplecloud/ProjetJS)]
 
 **Ouvrez WampServer et lancez phpMyAdmin :
 Mettez comme valeur pour entrer dans votre database :** 
 
-Utilisateur : root
+- Utilisateur : root
 
-Mot de passe: 
+- Mot de passe: 
 
-Choix du serveur : Mysql
+- Choix du serveur : Mysql
 
 **Ouvrez le projet dans votre IDE : 
 Copiez les fichiers .sql se trouvant dans frontend/assets en commencant par database.sql
@@ -50,7 +49,6 @@ cd ./backend/
 npm start
 
 A partir de là, vous pouvez ouvrir les fichiez html localement depuis vos fichiers ou bien avec l'extension LiveServer.
-
 Bonne navigation !
 
 ## **Auteur :**
