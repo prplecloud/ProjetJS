@@ -14,10 +14,15 @@ router.get('/boosters', controllers.getBoosters);
 router.get('/categories', controllers.getCategories);
 router.get('/products/search/:name', controllers.searchProductsByName);
 router.post('/update-stock', controllers.updateStock);
-
-
-
-
 router.get('/products/promotion', controllers.getProductsByPromo);
+
+
+router.get('*', (req, res) => {
+  res.status(404).json({ message: '404 Not Found' });
+});
+
+
+
+
 
 module.exports = router;

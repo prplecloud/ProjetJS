@@ -236,4 +236,7 @@ h2 {
         font-size: 0.35em;
     }
 
+    .commander_btn:active {
+        background-color: #F9B142;
+    }
 }

@@ -62,7 +62,8 @@ input {
     text-align: center;
 }
 
-button:hover {
-    background-color: #f0a083;
+#update-stock-button:active {
+    background-color: #F9B142;
 }
+
 

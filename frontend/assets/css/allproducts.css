@@ -334,3 +334,25 @@ optgroup {
 .page-button.active {
     background-color: darkorange;
 }
+
+.clear_filter_ctn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+#clear_filter {
+    background-color: #f15a25;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Rubik_Black';
+    padding: 10px 20px;
+}
+
+#clear_filter:active {
+    background-color: #F9B142;
+}

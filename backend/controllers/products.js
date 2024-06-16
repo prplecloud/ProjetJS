@@ -195,7 +195,7 @@ exports.updateStock = async (req, res) => {
 
                 const sql = 'UPDATE products SET stock = stock - ? WHERE products_id = ?';
                 connection.query(sql, [quantity, productId], (error, results) => {
-                    connection.release(); // Libérer la connexion après utilisation
+                    connection.release();
 
                     if (error) {
                         console.error('Erreur lors de la mise à jour du stock:', error);
