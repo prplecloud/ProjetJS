@@ -42,7 +42,7 @@ function displayProducts(products) {
         productElement.setAttribute('data-product-id', product.products_id);
         productElement.innerHTML = `
         <div class="coeur_ctn">
-        <img class="coeur empty-heart" src="assets/img/heart/empty-heart.png" alt="coeur vide">
+        <img class="coeur empty-heart" src="../assets/img/heart/empty-heart.png" alt="coeur vide">
         </div>
             <p class="licence">${product.licence_name}</p>
             <p class="cat">${product.category_name}</p>
@@ -60,11 +60,11 @@ function displayProducts(products) {
             event.preventDefault();
             const isHeartEmpty = this.src.includes('empty-heart');
             if (isHeartEmpty) {
-                this.src = 'assets/img/heart/filled-heart.png';
+                this.src = '../assets/img/heart/filled-heart.png';
                 const productId = this.closest('.article').getAttribute('data-product-id');
                 storeProductInLocalStorage(productId);
             } else {
-                this.src = 'assets/img/heart/empty-heart.png';
+                this.src = '../assets/img/heart/empty-heart.png';
                 const productId = this.closest('.article').getAttribute('data-product-id');
                 removeProductFromLocalStorage(productId);
             }
@@ -89,7 +89,7 @@ function updateFavoritedProductsDisplay() {
     document.querySelectorAll('.empty-heart').forEach(emptyHeart => {
         const productId = emptyHeart.closest('.article').getAttribute('data-product-id');
         if (favorites.includes(productId)) {
-            emptyHeart.src = 'assets/img/heart/filled-heart.png';
+            emptyHeart.src = '../assets/img/heart/filled-heart.png';
         }
     });
 }

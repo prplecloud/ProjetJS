@@ -55,7 +55,7 @@ function createProductElement(product) {
     productElement.setAttribute('data-product-id', product.products_id);
     productElement.innerHTML = `
     <div class="poubelle_ctn">
-    <img class="poubelle empty-heart" src="assets/img/poubelle/trash-1.png" alt="poubelle">
+    <img class="poubelle empty-heart" src="../assets/img/poubelle/trash-1.png" alt="poubelle">
     </div>  
     <p class="licence">${product.licence_name}</p>
     <p class="cat">${product.category_name}</p>

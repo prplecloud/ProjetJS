@@ -76,7 +76,7 @@ function createProductElement(product) {
     productElement.setAttribute('data-product-id', product.products_id);
     productElement.innerHTML = `
         <div class="coeur_ctn">
-            <img class="coeur empty-heart" src="assets/img/heart/empty-heart.png" alt="coeur vide">
+            <img class="coeur empty-heart" src="../assets/img/heart/empty-heart.png" alt="coeur vide">
         </div>
         <p class="licence">${product.licence_name}</p>
         <p class="cat">${product.category_name}</p>
@@ -105,10 +105,10 @@ function heartImgUpdate() {
             const productId = this.closest('.article').getAttribute('data-product-id');
 
             if (isHeartEmpty) {
-                this.src = 'assets/img/heart/filled-heart.png';
+                this.src = '../assets/img/heart/filled-heart.png';
                 storeInLocalStorage(productId);
             } else {
-                this.src = 'assets/img/heart/empty-heart.png';
+                this.src = '../assets/img/heart/empty-heart.png';
                 removeFromLocalStorage(productId);
             }
         });
@@ -134,7 +134,7 @@ function updateHeart() {
     document.querySelectorAll('.empty-heart').forEach(emptyHeart => {
         const productId = emptyHeart.closest('.article').getAttribute('data-product-id');
         if (favorites.includes(productId)) {
-            emptyHeart.src = 'assets/img/heart/filled-heart.png';
+            emptyHeart.src = '../assets/img/heart/filled-heart.png';
         }
     });
 }

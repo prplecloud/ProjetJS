@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Propos - Blazing Fail</title>
-    <link rel="stylesheet" href="assets/css/header.css">
-    <link rel="stylesheet" href="assets/css/about.css">
+    <title>Cartes à collectioner - Blazing Fail</title>
+    <link rel="stylesheet" href="../assets/css/header.css">
+    <link rel="stylesheet" href="../assets/css/index.css">
 </head>
+
 <body>
     <header>
         <a class="logo" href="index.html">
-            <img id="logo" src="assets/img/LogoSite.png" alt="">
+            <img id="logo" src="../assets/img/LogoSite.png" alt="">
         </a>
         <div class="menu-btn">
             <div class="menu-btn-burger"></div>
@@ -45,6 +47,17 @@
         </ul>
     </div>
     </nav>
+    <main>
+        <div class="choice">
+            <div class="choice_button">
+                <a href="licence.html?licence=1" id="pokemon_btn" class="category-link" data-licence="Pokemon"><img class="cat_img" src="../assets/img/LogoPkm.png" alt=""></a>
+                <a href="licence.html?licence=2" id="ygo_btn" class="category-link" data-licence="Yu-Gi-Oh"><img class="cat_img" src="../assets/img/LogoYGO.png" alt=""></a>
+            </div>
+        </div>
+        <div class="main_ctn">
+            <div class="articles"></div>
+        </div>
+    </main>
     <footer>
         <div class="contact">
             <h1>Nous Contacter</h1>
@@ -54,7 +67,7 @@
             <p>04 68 75 81 52</p>
             <p>France Metropolitaine</p>
         </div>
-        <img class="img_footer" src="assets/img/LogoSite.png" alt="">
+        <img class="img_footer" src="../assets/img/LogoSite.png" alt="">
         <div class="info">
             <h1>Informations</h1>
             <p><a class="nav" href="about.html">Qui sommes-nous</a></p>
@@ -63,10 +76,8 @@
             <p><a class="nav" href="">Plan du site</a></p>
         </div>
     </footer>
-    <script src="assets/js/categorie.js"></script>
-    <script src="assets/js/recherche.js"></script>
-    <script src="assets/js/header.js"></script>
-
+    <script src="../assets/js/recherche.js"></script>
+    <script src="../assets/js/header.js"></script>
 
 </body>
 </html>

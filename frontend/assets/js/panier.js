@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="prix">
                     <p>${total.toFixed(2)} €</p>
                 </div>
-                <img src="assets/img/poubelle/trash-1.png" alt="trash" class="trash">
+                <img src="../assets/img/poubelle/trash-1.png" alt="trash" class="trash">
             `;
 
             articleAllDiv.appendChild(articleDiv);
