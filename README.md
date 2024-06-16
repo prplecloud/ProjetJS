@@ -30,7 +30,7 @@ Ce projet mettra en pratique les compétences acquises dans le module Challenge 
 Assurez-vous d’avoir Node.js, npm, et MySQL installés sur votre système.
 **Clonez ce dépôt GitHub sur votre machine :**
 
-git clone:  [[https://github.com/EnzoCarbo/ProjetPersoPOO](https://github.com/prplecloud/ProjetJS)]
+git clone:  [https://github.com/prplecloud/ProjetJS](https://github.com/prplecloud/ProjetJS)
 
 **Ouvrez WampServer et lancez phpMyAdmin :
 Mettez comme valeur pour entrer dans votre database :** 
