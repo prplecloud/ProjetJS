@@ -1,4 +1,6 @@
-CREATE DATABASE e_commerce_js;
+CREATE DATABASE e_commerce_js
+DEFAULT CHARACTER SET latin1
+DEFAULT COLLATE latin1_bin;
 
 USE e_commerce_js;
 
